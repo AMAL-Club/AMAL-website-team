@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="icon" type="image/png" href="logo.png">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leadership | AMAL Club</title>
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #212529;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color:  rgba(46, 35, 33, 0.9);
+      padding: 0.01rem 2rem;
+      color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-left img {
+      height: 75px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fdd835;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #fdd835;
+    }
+
+    .top-banner {
+      height: 100vh;
+      background: url('01.jpg') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .leadership-heading {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .leadership-heading h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: #000;
+    }
+
+    .leadership-content {
+      background: #fff;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .leadership-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .leadership-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .leadership-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .member-card {
+  text-align: center;
+  margin: 10px;
+}
+
+.member-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.member-position {
+  font-size: 14px;
+  color: gray;
+}
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .member-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .member-card img {
+      width: 200px;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .member-name {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .member-role {
+      color: #fdd835;
+      font-size: 1rem;
+    }
+
+    .role-title {
+      font-size: 1.5rem;
+      margin: 3rem 0 1rem;
+      font-weight: bold;
+      color: #444;
+    }
+
+    .section-divider {
+      border: none;
+      height: 2px;
+      background: linear-gradient(to right, #fdd835, transparent);
+      margin: 3rem auto 2rem;
+      width: 60%;
+    }
+
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .social-footer img {
+      width: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .social-footer p {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.8rem;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.3);
+      color: #fdd835;
+    }
+
+    @media (max-width: 768px) {
+      .row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .leadership-heading h1 {
+        font-size: 2rem;
+      }
+
+      .leadership-content {
+        padding: 2rem 1rem;
+      }
+      
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="nav-left">
+        <img src="02.png" alt="AMAL Logo" />
+        <div class="logo-text">AMRITA MANAGEMENT AND LEADERSHIP CLUB</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="live_events.html">Live Events</a></li>
+          <li><a href="Leadership.html">Leadership</a></li>
+        </ul>
+      </nav>
+      
+    </div>
+  </header>
+
+  <section class="top-banner"></section>
+
+  <section class="leadership-heading">
+    <h1>Meet Our Leadership</h1>
+  </section>
+
+  <section class="leadership-content">
+    <p>
+      At AMAL Club, leadership is at the heart of everything we do. Our dedicated team of visionary thinkers, strategists, and changemakers works tirelessly to create impactful experiences, foster collaboration, and drive innovation. Together, we empower students to become confident leaders, effective communicators, and forward-thinking professionals
+    </p>
+  </section>
+
+  <section class="leadership-section">
+    <h2>Leadership Team</h2>
+
+    
+    <div class="row">
+      <div class="member-card">
+        <img src="PC01.jpg" alt="Founder" />
+        <div class="member-name">Prof. Sriram Devanathan</div>
+        <div class="member-position">Founder</div>
+      </div>
+      <div class="member-card">
+        <img src="PC02.jpg" alt="Mentor" />
+        <div class="member-name">Ankit Jain</div>
+        <div class="member-position">Mentor</div>
+      </div>
+      <div class="member-card">
+        <img src="PC03.jpg" alt="President" />
+        <div class="member-name">Sharanya Vanraj Thambi</div>
+        <div class="member-position">President</div>
+      </div>
+      <div class="member-card">
+        <img src="PC04.jpg" alt="Vice President" />
+        <div class="member-name">Vaishnav Menon</div>
+        <div class="member-position">Vice President</div>
+      </div>
+    </div>
+    
+
+    <div class="row" style="justify-content: center;">
+      <div class="member-card">
+        <img src="PC05.jpg" alt="Vice President 2" />
+        <div class="member-name">Kadiyala Bhargavaram</div>
+        <div class="member-position">Vice President </div>
+      </div>
+      <div class="member-card">
+        <img src="PC06.jpg" alt="Treasurer" />
+        <div class="member-name">Vamisetty Divyareshma</div>
+        <div class="member-position">Treasurer</div>
+      </div>
+    </div>
+    
+
+    <hr class="section-divider" />
+
+    <div class="role-title">Chairs</div>
+    <div class="row">
+      <div class="member-card">
+        <img src="CH01.jpg" alt="Chair 1" />
+        <div class="member-name">Disha Gaonkar</div>
+        <div class="member-position">Management Chair</div>
+      </div>
+      <div class="member-card">
+        <img src="CH02.jpg" alt="Chair 2" />
+        <div class="member-name">Minakshi Unnithan</div>
+        <div class="member-position">Leadership Chair</div>
+      </div>
+      <div class="member-card">
+        <img src="CH03.jpg" alt="Chair 3" />
+        <div class="member-name">Sanidhya Sharma</div>
+        <div class="member-position">Public Speaking Chair</div>
+      </div>
+    </div>
+    
+
+    <hr class="section-divider" />
+
+    <div class="role-title">Co-heads</div>
+    <div class="row">
+      <div class="member-card"><img src="CO01.jpg" alt="Co-head 1" /><div class="member-name">Prajwal Pulla</div></div>
+      <div class="member-card"><img src="CO02.jpg" alt="Co-head 2" /><div class="member-name">Anirudh S</div></div>
+      <div class="member-card"><img src="CO03.jpg" alt="Co-head 3" /><div class="member-name">Rehwa R Bhole</div></div>
+      <div class="member-card"><img src="CO04.jpg" alt="Co-head 4" /><div class="member-name">Deepak S A</div></div>
+      <div class="member-card"><img src="CO05.jpg" alt="Co-head 5" /><div class="member-name">Gopi Chand S</div></div>
+      <div class="member-card"><img src="CO06.jpg" alt="Co-head 6" /><div class="member-name">Hridya Krishna</div></div>
+      <div class="member-card"><img src="CO07.jpg" alt="Co-head 7" /><div class="member-name">Sooraj S Mekkunnel</div></div>
+      <div class="member-card"><img src="CO08.jpg" alt="Co-head 8" /><div class="member-name">Krishna P Tambatkar</div></div>
+      <div class="member-card"><img src="CO09.jpg" alt="Co-head 9" /><div class="member-name">S K Keerthi Ragav</div></div>
+      <div class="member-card"><img src="CO10.jpg" alt="Co-head 10" /><div class="member-name">Santhwana Santhosh Kumar</div></div>
+      <div class="member-card"><img src="CO11.jpg" alt="Co-head 11" /><div class="member-name">Bhavaraju Venkata Anagha</div></div>
+      <div class="member-card"><img src="CO12.jpg" alt="Co-head 12" /><div class="member-name">A R Dhedeep Reddy</div></div>
+      <div class="member-card"><img src="CO13.jpg" alt="Co-head 13" /><div class="member-name">Sanjana. R</div></div>
+    </div>
+
+    <hr class="section-divider" />
+
+    <div class="role-title">ExComm</div>
+    <div class="row">
+      <div class="member-card"><img src="EX01.jpg" alt="ExComm 1" /><div class="member-name">Aditya S Prabhakar
+      </div></div>
+      <div class="member-card"><img src="EX02.jpg" alt="ExComm 2" /><div class="member-name">C.Shri Shyam Charan
+      </div></div>
+      <div class="member-card"><img src="EX03.jpg" alt="ExComm 3" /><div class="member-name">Srimansi Ayyadevara</div></div>
+      <div class="member-card"><img src="EX04.jpg" alt="ExComm 4" /><div class="member-name">Swayampakula Rohith Kashyap
+      </div></div>
+      <div class="member-card"><img src="EX05.jpg" alt="ExComm 5" /><div class="member-name">Varshith P
+      </div></div>
+      <div class="member-card"><img src="EX06.jpg" alt="ExComm 6" /><div class="member-name">Sabith P</div></div>
+      <div class="member-card"><img src="EX07.jpg" alt="ExComm 7" /><div class="member-name">Navnita Krishnan
+      </div></div>
+      <div class="member-card"><img src="EX08.jpg" alt="ExComm 8" /><div class="member-name">Krishnendu M Uday</div></div>
+      <div class="member-card"><img src="EX09.jpg" alt="ExComm 9" /><div class="member-name">Haritha D
+      </div></div>
+      <div class="member-card"><img src="EX10.jpg" alt="ExComm 10" /><div class="member-name">S. Kanishka</div></div>
+      <div class="member-card"><img src="EX11.jpg" alt="ExComm 11" /><div class="member-name">Saket B N</div></div>
+      <div class="member-card"><img src="EX12.jpg" alt="ExComm 12" /><div class="member-name">Peddi Pranitha</div></div>
+      <div class="member-card"><img src="EX13.jpg" alt="ExComm 13" /><div class="member-name">Andrew Tom Mathew</div></div>
+      <div class="member-card"><img src="EX14.jpg" alt="ExComm 14" /><div class="member-name">Nandakrishna J
+      </div></div>
+      <div class="member-card"><img src="EX15.jpg" alt="ExComm 15" /><div class="member-name">Jeevietha Ramesh Kumar</div></div>
+      <div class="member-card"><img src="EX20.jpg" alt="ExComm 20" /><div class="member-name">M Shrivardhan </div></div>
+      <div class="member-card"><img src="EX16.jpg" alt="ExComm 16" /><div class="member-name">Shobhana Priya</div></div>
+      <div class="member-card"><img src="EX17.jpg" alt="ExComm 17" /><div class="member-name">Adithya Sundar</div></div>
+      <div class="member-card"><img src="EX18.jpg" alt="ExComm 18" /><div class="member-name">Kavya Rao</div></div>
+      <div class="member-card"><img src="EX19.jpg" alt="ExComm 19" /><div class="member-name">Aaromal Shaji</div></div>
+
+      
+      
+    </div>
+
+    <hr class="section-divider" />
+
+  </section>
+
+  <footer>
+    <div class="social-footer">
+      <img src="02.jpg" alt="AMAL Club Logo" />
+      <p>Follow Us</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/amal_amritabengaluru/?__pwa=1#"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/amal-club-amrita-bengaluru/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@AMALClub_amrita"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <p>&copy; 2025 AMAL Club | All rights reserved</p>
+  </footer>
+
+  <script>
+    const currentLocation = location.href;
+    const menuItem = document.querySelectorAll('nav ul li a');
+    menuItem.forEach(link => {
+      if (link.href === currentLocation) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+
+</body>
+</html>

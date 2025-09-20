@@ -1,0 +1,29 @@
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+<div id="reader" style="width:300px; margin: 0 auto; padding-top: 2rem;"></div>
+
+<script>
+  function logAttendance(uniqueID) {
+  const formData = new FormData();
+  formData.append("id", uniqueID); // 🔧 Fix: use "id" to match server
+
+  fetch('https://script.google.com/macros/s/AKfycbw1bFzACuUWTrlZmhFXLQU-16utjWa5DczLcEwwUhTY48vABM2fGD1kh50fhGUxlvpj/exec', {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.text())
+  .then(data => alert("✅ " + data)) // This will show actual name if returned
+  .catch(err => {
+    alert("Error marking attendance");
+    console.error(err);
+  });
+}
+
+
+  const scanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
+
+  scanner.render((decodedText, decodedResult) => {
+    scanner.clear();
+    logAttendance(decodedText);
+  });
+</script>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="icon" type="image/png" href="logo.png">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events | AMAL Club</title>
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #212529;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(46, 35, 33, 0.9);
+      padding: 0.01rem 2rem;
+      color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-left img {
+      height: 75px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fdd835;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #fdd835;
+    }
+
+    .top-banner {
+      height: 85vh;
+      background: url('05.jpg') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .events-heading {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .events-heading h1 {
+      font-size: 2.5rem;
+    }
+
+    .events-content {
+      background: #fff;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .events-content p {
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: #333;
+    }
+
+    .event-block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4rem;
+      gap: 2rem;
+      opacity: 0;
+    }
+
+    .event-block img {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .event-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .event-text h3 {
+      color: #fdd835;
+      margin-bottom: 1rem;
+    }
+
+    .event-text p {
+      color: #555;
+    }
+
+    .fade-left.in-view {
+      animation: fadeLeft 4s ease forwards;
+    }
+
+    .fade-right.in-view {
+      animation: fadeRight 4s ease forwards;
+    }
+
+    @keyframes fadeLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .social-footer img {
+      width: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .social-footer p {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.8rem;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.3);
+      color: #fdd835;
+    }
+
+    @media (max-width: 768px) {
+      .event-block {
+        flex-direction: column !important;
+        text-align: center;
+      }
+
+      .event-block img {
+        max-width: 100%;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="nav-left">
+        <img src="02.png" alt="AMAL Logo" />
+        <div class="logo-text">AMRITA MANAGEMENT AND LEADERSHIP CLUB</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="live_events.html">Live Events</a></li>
+          <li><a href="Leadership.html">Leadership</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="top-banner"></section>
+
+  <section class="events-heading">
+    <h1>Our Events</h1>
+  </section>
+
+  <section class="events-content">
+    <p>
+      At AMAL Club, we believe in learning through experience, collaboration, and real-world challenges. Our events are designed to enhance leadership, management, and communication skills, empowering students to step into roles that shape the future. From intellectually stimulating debates to hands-on entrepreneurship workshops, our events provide the perfect platform for students to develop strategic thinking, teamwork, and professional excellence.
+    </p>
+
+    <div class="event-block fade-left">
+      <img src="EVENT_01.jpg" alt="Leadership Bootcamp">
+      <div class="event-text">
+        <h3>Innovate X</h3>
+        <p>Innovate X is AMAL's premier entrepreneurial challenge where participants step into the shoes of startup founders and business strategists.
+          This 2 day workshop encourages students to ideate, develop, and pitch their innovative business solutions to a panel of industry experts and investors.
+        </p>
+      </div>
+    </div>
+
+    <div class="event-block fade-right" style="flex-direction: row-reverse;">
+      <img src="MCK02.jpg" alt="Idea Pitching Contest">
+      <div class="event-text">
+        <h3>Mock Parliament</h3>
+        <p>The AMAL Mock Parliament is a flagship event designed to simulate the workings of the Indian Parliament, allowing students to experience real policymaking, debate, and leadership in action. Participants take on roles such as MPs, the Speaker, Prime Minister, and the Leader of Opposition, engaging in heated debates, bill drafting, and voting procedures.</p>
+      </div>
+    </div>
+
+    <div class="event-block fade-left">
+      <img src="EVENT_03.jpg" alt="Team Synergy Challenge">
+      <div class="event-text">
+        <h3>linkedin Optimization</h3>
+        <p>The LinkedIn Optimization Workshop by AMAL Club is designed to help students build a strong professional presence, network effectively, and unlock career opportunities. Whether you're new to LinkedIn or looking to enhance your personal brand, this workshop will provide insider strategies to make your profile stand out!</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-footer">
+      <img src="02.png" alt="AMAL Club Logo" />
+      <p>Follow Us</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/amal_amritabengaluru/?__pwa=1#"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/amal-club-amrita-bengaluru/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@AMALClub_amrita"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <p>&copy; 2025 AMAL Club | All rights reserved</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.event-block').forEach(block => {
+      observer.observe(block);
+    });
+    const currentLocation = location.href;
+    const menuItem = document.querySelectorAll('nav ul li a');
+    menuItem.forEach(link => {
+      if (link.href === currentLocation) {
+        link.classList.add('active');
+      }
+    });
+
+    
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="icon" type="image/png" href="logo.png">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | AMAL Club</title>
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #212529;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 0.01rem 2rem;
+      color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-left img {
+      height: 75px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fdd835;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #fdd835;
+    }
+
+    .top-banner {
+      height: 60vh;
+      background: url('04.jpg') no-repeat center center/cover;
+      margin-top: -80px; 
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-heading {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .about-heading h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    .about-content {
+      background: #fff;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .mission-vision {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .mission-vision div {
+      background-color: #f1f1f1;
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+
+    .mission-vision h2 {
+      margin-bottom: 0.75rem;
+      color: #fdd835;
+    }
+
+    .values {
+      background: #f9f9f9;
+      padding: 2rem;
+      border-radius: 8px;
+    }
+
+    .values h2 {
+      color: #fdd835;
+      margin-bottom: 1rem;
+    }
+
+    .values ul {
+      list-style-type: disc;
+      text-align: left;
+      padding-left: 1.5rem;
+    }
+
+    .values li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .social-footer img {
+      width: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .social-footer p {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.8rem;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.3);
+      color: #fdd835;
+    }
+
+    @media (max-width: 768px) {
+      .mission-vision {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        background: rgba(0,0,0,0.7);
+        padding: 1rem;
+      }
+
+      .about-heading h1 {
+        font-size: 2rem;
+      }
+
+      .about-content {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="nav-left">
+        <img src="02.png" alt="AMAL Logo" />
+        <div class="logo-text">AMRITA MANAGEMENT AND LEADERSHIP CLUB</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="live_events.html">Live Events</a></li>
+          <li><a href="Leadership.html">Leadership</a></li>
+        </ul>
+      </nav>
+      
+    </div>
+  </header>
+
+  <section class="top-banner"></section>
+
+  <section class="about-heading">
+    <h1>About Us</h1>
+  </section>
+
+  <section class="about-content">
+    <p>
+      The Amrita Management and Leadership (AMAL) Club at Amrita Vishwa Vidyapeetham, Bengaluru, is a vibrant student-driven initiative dedicated to nurturing leadership, management, and communication skills. Our mission is to provide students with a dynamic platform to explore real-world challenges, engage in strategic thinking, and develop the confidence to lead in their future careers
+    </p>
+    <p><em>At AMAL, we believe that leadership is not just a title, but a mindset</em></p>
+
+    <div class="mission-vision">
+      <div>
+        <h2>Our Mission</h2>
+        <p>
+          To provide a platform that nurtures personal and professional development through peer collaboration, skill-building experiences expert-led initiatives focused on management, leadership, and communication.
+        </p>
+      </div>
+      <div>
+        <h2>Our Vision</h2>
+        <p>
+          To be a leading club which empowers students to unlock their full potential and thrive in both personal and professional spheres through collaborative learning experiences.
+        </p>
+      </div>
+    </div>
+
+    <div class="values">
+      <h2>Core Values</h2>
+      <ul>
+        <li>Value Creation - Creating value for Amrita students through collaborative efforts</li>
+        <li>Continuous Growth - Growth as individuals, as professionals and as a team</li>
+        <li>Collaborative Leadership</li>
+        <li>Kindness - Kindness towards self and others</li>
+        <li>Innovation & Adaptability</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-footer">
+      <img src="02.png" alt="AMAL Club Logo" />
+      <p>Follow Us</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/amal_amritabengaluru/?__pwa=1#"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/amal-club-amrita-bengaluru/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@AMALClub_amrita"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <p>&copy; 2025 AMAL Club | All rights reserved</p>
+  </footer>
+
+  <script>
+    const currentLocation = location.href;
+    const menuItem = document.querySelectorAll('nav ul li a');
+    menuItem.forEach(link => {
+      if (link.href === currentLocation) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+
+</body>
+</html>

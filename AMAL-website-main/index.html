@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" type="image/png" href="logo.png">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AMAL - Amrita Management and Leadership Club</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    body.light {
+      background: #f5f5f5;
+      color: #111;
+    }
+
+    body.dark {
+      background: #0f172a;
+      color: #f1f1f1;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 0.01rem 2rem;
+      color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-left img {
+      height: 75px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fdd835;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #fdd835;
+    }
+
+    main {
+      margin-top: -100px; 
+    }
+
+    .hero {
+      background: url('BG_01.jpg') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 6px #000;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+
+    .btn {
+      background: #fdd835;
+      color: #000;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .section-split {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 4rem 2rem;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .section-split .text {
+      flex: 1 1 45%;
+      min-width: 300px;
+    }
+
+    .section-split .image {
+      flex: 1 1 40%;
+      text-align: center;
+    }
+
+    .section-split .image img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .section-split h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 4rem 2rem;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+    }
+
+    .feature h2 {
+      margin-bottom: 1rem;
+    }
+
+    .social-footer {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .social-icons a {
+      color: inherit;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #fdd835;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #111;
+      color: #fff;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #fdd835;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .bottom-logo {
+      position: fixed;
+      bottom: 90px;
+      left: 20px;
+      z-index: 100;
+    }
+
+    .bottom-logo img {
+      height: 80px;
+      opacity: 0.9;
+    }
+
+    body.dark .section-split[style*="background:#f5f5f5;"] {
+      background: #1e293b !important;
+      color: #f1f1f1;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .bottom-logo {
+        bottom: 120px;
+        left: 10px;
+        opacity: 0.8;
+      }
+
+      .bottom-logo img {
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body class="light">
+
+  <header>
+    <div class="header-container">
+      <div class="nav-left">
+        <img src="02.png" alt="AMAL Logo" />
+        <div class="logo-text">AMRITA MANAGEMENT AND LEADERSHIP CLUB</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="live_events.html">Live Events</a></li>
+          <li><a href="Leadership.html">Leadership</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <h1>Empowering Tomorrow’s Leaders</h1>
+      <p></p>
+      <p></p>
+      <p>Leadership | Management | Communication</p>
+      <a href="about.html" class="btn">Explore AMAL</a>
+    </section>
+
+    <section class="section-split" data-aos="fade-right">
+      <div class="text">
+        <h2>About AMAL Club</h2>
+        <p>Empowering Leaders, Inspiring Change</p>
+        <p>The Amrita Management and Leadership (AMAL) Club at Amrita Vishwa Vidyapeetham, Bengaluru, is a dynamic student-led organization dedicated to fostering leadership, management, and communication skills. Through interactive workshops, engaging competitions, and real-world simulations, AMAL empowers students to unlock their full potential and thrive in both personal and professional spheres.</p>
+      </div>
+      <div class="image">
+        <img src="02.jpg" alt="AMAL Logo">
+      </div>
+    </section>
+
+    <section class="section-split" style="background:#f5f5f5;" data-aos="fade-left">
+      <div class="image">
+        <img src="03.jpg" alt="Amrita Vishwa Vidyapeetham">
+      </div>
+      <div class="text">
+        <h2>Amrita Vishwa Vidyapeetham</h2>
+        <p>The Amrita Management and Leadership (AMAL) Club embodies the university’s ethos by fostering management, leadership, and communication skills among students. In alignment with Amrita’s vision of education for life and education for living, AMAL provides opportunities for students. Amrita Vishwa Vidyapeetham’s commitment to excellence in education and leadership development fuels the growth of student-driven initiatives like AMAL, making it a transformative platform for young professionals of tomorrow.</p>
+         <p>🏛 Empowered at Amrita, Inspired for Life!</p>
+      </div>
+    </section>
+
+    <section class="features" data-aos="fade-up">
+      <h2 style="text-align:center; width:100%; font-size:2.5rem; margin-bottom:2rem;">Our Events</h2>
+      <div class="feature">
+        <h2>INNOVATE X</h2>
+        <p>The Innovate X Leadership Workshop is an exclusive collaboration between the AMAL Club and ACE (Amrita Centre for Entrepreneurship), designed to empower students with essential leadership, management, and entrepreneurial skills.</p>
+      </div>
+      <div class="feature">
+        <h2>MOCK PARLIAMENT</h2>
+        <p><em>Debate. Discuss. Decide</em></p>
+        <p>The AMAL Mock Parliament is a flagship event designed to simulate real parliamentary proceedings, giving participants a platform to debate, strategize, and engage in policy-making discussions. This high-energy event allows students to step into the roles of Members of Parliament (MPs), the Speaker, Prime Minister, and Leader of the Opposition, tackling critical national and global issues.</p>
+      </div>
+      <div class="feature">
+        <h2>MASTERING THE MIC</h2>
+        <p><em>Speak with Confidence. Persuade with Power!</em></p>
+        <p>Mastering the Mic is an exclusive public speaking and communication workshop by the AMAL Club, designed to help participants develop confidence, articulate ideas effectively, and command an audience with impact. Whether you’re a beginner or an experienced speaker, this workshop will provide practical techniques and hands-on exercises to sharpen your oratory skills.</p>
+      </div>
+    </section>
+
+    <section class="social-footer">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/amal_amritabengaluru/?__pwa=1#"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/amal-club-amrita-bengaluru/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@AMALClub_amrita"><i class="fab fa-youtube"></i></a>
+      </div>
+    </section>
+
+    <div class="bottom-logo">
+      <img src="02.png" alt="Bottom Left Logo">
+    </div>
+
+    <footer>
+      <p>&copy; 2025 AMAL Club | All rights reserved</p>
+    </footer>
+
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <i class="fas fa-adjust"></i>
+    </button>
+  </main>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      document.body.classList.toggle("light");
+    }
+
+    const currentLocation = location.href;
+    const menuItem = document.querySelectorAll('nav ul li a');
+    menuItem.forEach(link => {
+      if (link.href === currentLocation) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+
+</body>
+</html>

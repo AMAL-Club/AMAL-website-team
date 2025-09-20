@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="icon" type="image/png" href="logo.png">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Live Events - AMAL Club</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #111;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 0.01rem 2rem;
+      color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-left img {
+      height: 75px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fdd835;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #fdd835;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .social-footer img {
+      width: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .social-footer p {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.8rem;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.3);
+      color: #fdd835;
+    }
+
+
+    .event-card {
+      background: white;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .event-card h2 {
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #fdd835;
+      color: #000;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #111;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        background: rgba(0,0,0,0.7);
+        padding: 1rem;
+      }
+
+      .logo-text {
+        font-size: 1.2rem;
+      }
+
+      .event-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="nav-left">
+        <img src="02.png" alt="AMAL Logo" />
+        <div class="logo-text">AMRITA MANAGEMENT AND LEADERSHIP CLUB</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="live_events.html" class="active">Live Events</a></li>
+          <li><a href="Leadership.html">Leadership</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Live Event</h1>
+
+    <div class="event-card">
+      <h2>🎯 Management Monopoly</h2>
+<p style="text-align: justify;">Step into the world of strategic leadership with three dynamic challenges! Tackle real-time crises in the <strong>Crisis Game</strong>, showcase your creativity and clarity in the <strong>Ad Campaign Challenge</strong>, and race against time with your team in the thrilling <strong>Time Bomb Game</strong>. Compete, collaborate, and rise to the top in this ultimate management showdown!</p>      <a class="btn" href="event_reg.html">Register Now</a>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="social-footer">
+      <img src="02.png" alt="AMAL Club Logo" />
+      <p>Follow Us</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/amal_amritabengaluru/?__pwa=1#"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/amal-club-amrita-bengaluru/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@AMALClub_amrita"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <p>&copy; 2025 AMAL Club | All rights reserved</p>
+  </footer>
+  
+
+  <script>
+    const currentLocation = location.href;
+    const menuItem = document.querySelectorAll('nav ul li a');
+    menuItem.forEach(link => {
+      if (link.href === currentLocation) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+</html>
