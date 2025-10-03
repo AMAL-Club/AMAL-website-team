@@ -94,6 +94,39 @@
       font-size: 2.5rem;
     }
 
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.75rem 2rem;
+      background-color: #2e2321;
+      color: white;
+      border: 2px solid #2e2321;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      background-color: #fdd835;
+      border-color: #fdd835;
+      color: #2e2321;
+      transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+      background-color: #fdd835;
+      border-color: #fdd835;
+      color: #2e2321;
+    }
+
     .events-content {
       background: #fff;
       padding: 4rem 2rem;
@@ -101,7 +134,7 @@
       margin: auto;
     }
 
-    .events-content p {
+    .events-content > p {
       font-size: 1.1rem;
       margin-bottom: 3rem;
       text-align: center;
@@ -116,6 +149,11 @@
       margin-bottom: 4rem;
       gap: 2rem;
       opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .event-block.hidden {
+      display: none;
     }
 
     .event-block img {
@@ -137,6 +175,17 @@
 
     .event-text p {
       color: #555;
+    }
+
+    .event-year {
+      display: inline-block;
+      background-color: #2e2321;
+      color: #fdd835;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
     }
 
     .fade-left.in-view {
@@ -220,7 +269,11 @@
         flex-wrap: wrap;
         justify-content: center;
       }
-      
+
+      .filter-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -235,8 +288,8 @@
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="events.html">Events</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html" class="active">Events</a></li>
           <li><a href="live_events.html">Live Events</a></li>
           <li><a href="Leadership.html">Leadership</a></li>
         </ul>
@@ -255,17 +308,39 @@
       At AMAL Club, we believe in learning through experience, collaboration, and real-world challenges. Our events are designed to enhance leadership, management, and communication skills, empowering students to step into roles that shape the future. From intellectually stimulating debates to hands-on entrepreneurship workshops, our events provide the perfect platform for students to develop strategic thinking, teamwork, and professional excellence.
     </p>
 
-    <div class="event-block fade-left">
+    <div class="filter-container">
+      <button class="filter-btn active" data-filter="all">All Events</button>
+      <button class="filter-btn" data-filter="2025">2025/26</button>
+      <button class="filter-btn" data-filter="previous">Previous Years</button>
+    </div>
+
+    <div class="event-block fade-left" data-year="2025">
+      <img src="event_n1.jpg" alt="Pitch Deck">
+      <div class="event-text">
+        <h3>Pitch Deck</h3>
+        <p>Pitch Deck, organized by AMAL Club at Kalakriti 2025, challenged teams to pitch quirky product ideas on the spot, boosting creativity, teamwork, and public speaking. Winners impressed with originality, humor, and quick thinking.</p>
+      </div>
+    </div>
+
+    <div class="event-block fade-right" style="flex-direction: row-reverse;" data-year="previous">
+      <img src="event_n2.jpg" alt="Management Monopoly">
+      <div class="event-text">
+        <h3>Management Monopoly</h3>
+        <p>At Kalanjali 2025, AMAL Club hosted Management Games that tested students' problem-solving, communication, and teamwork through real-time challenges. Three winning teams were awarded mementos for their standout performance across all rounds.</p>
+      </div>
+    </div>
+
+    <div class="event-block fade-left" data-year="previous">
       <img src="EVENT_01.jpg" alt="Leadership Bootcamp">
       <div class="event-text">
-        <h3>Innovate X</h3>
+        <h3>Innovate X</h3>
         <p>Innovate X is AMAL's premier entrepreneurial challenge where participants step into the shoes of startup founders and business strategists.
           This 2 day workshop encourages students to ideate, develop, and pitch their innovative business solutions to a panel of industry experts and investors.
         </p>
       </div>
     </div>
 
-    <div class="event-block fade-right" style="flex-direction: row-reverse;">
+    <div class="event-block fade-right" style="flex-direction: row-reverse;" data-year="previous">
       <img src="MCK02.jpg" alt="Idea Pitching Contest">
       <div class="event-text">
         <h3>Mock Parliament</h3>
@@ -273,10 +348,10 @@
       </div>
     </div>
 
-    <div class="event-block fade-left">
+    <div class="event-block fade-left" data-year="previous">
       <img src="EVENT_03.jpg" alt="Team Synergy Challenge">
       <div class="event-text">
-        <h3>linkedin Optimization</h3>
+        <h3>LinkedIn Optimization</h3>
         <p>The LinkedIn Optimization Workshop by AMAL Club is designed to help students build a strong professional presence, network effectively, and unlock career opportunities. Whether you're new to LinkedIn or looking to enhance your personal brand, this workshop will provide insider strategies to make your profile stand out!</p>
       </div>
     </div>
@@ -307,6 +382,7 @@
     document.querySelectorAll('.event-block').forEach(block => {
       observer.observe(block);
     });
+
     const currentLocation = location.href;
     const menuItem = document.querySelectorAll('nav ul li a');
     menuItem.forEach(link => {
@@ -315,9 +391,41 @@
       }
     });
 
-    
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const eventBlocks = document.querySelectorAll('.event-block');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        // Filter events
+        eventBlocks.forEach(block => {
+          const eventYear = block.getAttribute('data-year');
+          
+          if (filter === 'all') {
+            block.classList.remove('hidden');
+          } else if (filter === '2025') {
+            if (eventYear === '2025') {
+              block.classList.remove('hidden');
+            } else {
+              block.classList.add('hidden');
+            }
+          } else if (filter === 'previous') {
+            if (eventYear !== '2025') {
+              block.classList.remove('hidden');
+            } else {
+              block.classList.add('hidden');
+            }
+          }
+        });
+      });
+    });
   </script>
 
 </body>
 </html>
-
