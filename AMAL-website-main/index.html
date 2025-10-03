@@ -1,44 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="icon" type="image/png" href="logo.png">
-
+  <link rel="icon" type="image/png" href="logo.png">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AMAL - Amrita Management and Leadership Club</title>
+  <title>Events | AMAL Club</title>
 
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      transition: background 0.3s, color 0.3s;
-      overflow-x: hidden;
-    }
-
-    body.light {
-      background: #f5f5f5;
-      color: #111;
-    }
-
-    body.dark {
-      background: #0f172a;
-      color: #f1f1f1;
+      background-color: #fff;
+      color: #212529;
+      line-height: 1.6;
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(46, 35, 33, 0.9);
       padding: 0.01rem 2rem;
       color: #fff;
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -87,179 +76,208 @@
       color: #fdd835;
     }
 
-    main {
-      margin-top: -100px; 
+    .top-banner {
+      height: 85vh;
+      background: url('05.jpg') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .hero {
-      background: url('BG_01.jpg') center/cover no-repeat;
-      height: 100vh;
+    .events-heading {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .events-heading h1 {
+      font-size: 2.5rem;
+    }
+
+    .filter-container {
       display: flex;
       justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.75rem 2rem;
+      background-color: #2e2321;
       color: white;
-      position: relative;
+      border: 2px solid #2e2321;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
     }
 
-    .hero h1 {
-      font-size: 3rem;
-      text-shadow: 2px 2px 6px #000;
+    .filter-btn:hover {
+      background-color: #fdd835;
+      border-color: #fdd835;
+      color: #2e2321;
+      transform: translateY(-2px);
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      margin: 1rem 0;
+    .filter-btn.active {
+      background-color: #fdd835;
+      border-color: #fdd835;
+      color: #2e2321;
     }
 
-    .btn {
-      background: #fdd835;
-      color: #000;
-      padding: 0.7rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+    .events-content {
+      background: #fff;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    .section-split {
+    .events-content > p {
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: #333;
+    }
+
+    .event-block {
       display: flex;
       flex-wrap: wrap;
-      padding: 4rem 2rem;
-      justify-content: center;
       align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4rem;
       gap: 2rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    .section-split .text {
-      flex: 1 1 45%;
-      min-width: 300px;
+    .event-block.hidden {
+      display: none;
     }
 
-    .section-split .image {
-      flex: 1 1 40%;
-      text-align: center;
-    }
-
-    .section-split .image img {
-      max-width: 100%;
+    .event-block img {
+      width: 100%;
+      max-width: 450px;
       border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .section-split h2 {
-      font-size: 2rem;
+    .event-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .event-text h3 {
+      color: #fdd835;
       margin-bottom: 1rem;
     }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 4rem 2rem;
+    .event-text p {
+      color: #555;
     }
 
-    .feature {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 2rem;
-      border-radius: 10px;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .event-year {
+      display: inline-block;
+      background-color: #2e2321;
+      color: #fdd835;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
     }
 
-    .feature:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+    .fade-left.in-view {
+      animation: fadeLeft 4s ease forwards;
     }
 
-    .feature h2 {
+    .fade-right.in-view {
+      animation: fadeRight 4s ease forwards;
+    }
+
+    @keyframes fadeLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .social-footer img {
+      width: 60px;
       margin-bottom: 1rem;
     }
 
-    .social-footer {
-      text-align: center;
-      padding: 2rem;
+    .social-footer p {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .social-icons {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
     }
 
     .social-icons a {
-      color: inherit;
-      transition: color 0.3s;
+      color: white;
+      font-size: 1.8rem;
+      transition: transform 0.3s ease;
     }
 
     .social-icons a:hover {
+      transform: scale(1.3);
       color: #fdd835;
     }
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #111;
-      color: #fff;
-    }
-
-    .theme-toggle {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background: #fdd835;
-      border: none;
-      padding: 10px;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-    .bottom-logo {
-      position: fixed;
-      bottom: 90px;
-      left: 20px;
-      z-index: 100;
-    }
-
-    .bottom-logo img {
-      height: 80px;
-      opacity: 0.9;
-    }
-
-    body.dark .section-split[style*="background:#f5f5f5;"] {
-      background: #1e293b !important;
-      color: #f1f1f1;
-    }
-
     @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem 0;
+      .event-block {
+        flex-direction: column !important;
+        text-align: center;
+      }
+
+      .event-block img {
+        max-width: 100%;
       }
 
       nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
-      .bottom-logo {
-        bottom: 120px;
-        left: 10px;
-        opacity: 0.8;
-      }
-
-      .bottom-logo img {
-        height: 60px;
+      .filter-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
       }
     }
   </style>
 </head>
-<body class="light">
+<body>
 
   <header>
     <div class="header-container">
@@ -269,9 +287,9 @@
       </div>
       <nav>
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="events.html">Events</a></li>
+          <li><a href="events.html" class="active">Events</a></li>
           <li><a href="live_events.html">Live Events</a></li>
           <li><a href="Leadership.html">Leadership</a></li>
         </ul>
@@ -279,86 +297,91 @@
     </div>
   </header>
 
-  <main>
+  <section class="top-banner"></section>
 
-    <section class="hero">
-      <h1>Empowering Tomorrow’s Leaders</h1>
-      <p></p>
-      <p></p>
-      <p>Leadership | Management | Communication</p>
-      <a href="about.html" class="btn">Explore AMAL</a>
-    </section>
+  <section class="events-heading">
+    <h1>Our Events</h1>
+  </section>
 
-    <section class="section-split" data-aos="fade-right">
-      <div class="text">
-        <h2>About AMAL Club</h2>
-        <p>Empowering Leaders, Inspiring Change</p>
-        <p>The Amrita Management and Leadership (AMAL) Club at Amrita Vishwa Vidyapeetham, Bengaluru, is a dynamic student-led organization dedicated to fostering leadership, management, and communication skills. Through interactive workshops, engaging competitions, and real-world simulations, AMAL empowers students to unlock their full potential and thrive in both personal and professional spheres.</p>
-      </div>
-      <div class="image">
-        <img src="02.jpg" alt="AMAL Logo">
-      </div>
-    </section>
+  <section class="events-content">
+    <p>
+      At AMAL Club, we believe in learning through experience, collaboration, and real-world challenges. Our events are designed to enhance leadership, management, and communication skills, empowering students to step into roles that shape the future. From intellectually stimulating debates to hands-on entrepreneurship workshops, our events provide the perfect platform for students to develop strategic thinking, teamwork, and professional excellence.
+    </p>
 
-    <section class="section-split" style="background:#f5f5f5;" data-aos="fade-left">
-      <div class="image">
-        <img src="03.jpg" alt="Amrita Vishwa Vidyapeetham">
-      </div>
-      <div class="text">
-        <h2>Amrita Vishwa Vidyapeetham</h2>
-        <p>The Amrita Management and Leadership (AMAL) Club embodies the university’s ethos by fostering management, leadership, and communication skills among students. In alignment with Amrita’s vision of education for life and education for living, AMAL provides opportunities for students. Amrita Vishwa Vidyapeetham’s commitment to excellence in education and leadership development fuels the growth of student-driven initiatives like AMAL, making it a transformative platform for young professionals of tomorrow.</p>
-         <p>🏛 Empowered at Amrita, Inspired for Life!</p>
-      </div>
-    </section>
+    <div class="filter-container">
+      <button class="filter-btn active" data-filter="all">All Events</button>
+      <button class="filter-btn" data-filter="2025">2025/26</button>
+      <button class="filter-btn" data-filter="previous">Previous Years</button>
+    </div>
 
-    <section class="features" data-aos="fade-up">
-      <h2 style="text-align:center; width:100%; font-size:2.5rem; margin-bottom:2rem;">Our Events</h2>
-      <div class="feature">
-        <h2>INNOVATE X</h2>
-        <p>The Innovate X Leadership Workshop is an exclusive collaboration between the AMAL Club and ACE (Amrita Centre for Entrepreneurship), designed to empower students with essential leadership, management, and entrepreneurial skills.</p>
+    <div class="event-block fade-left" data-year="2025">
+      <img src="event_n1.jpg" alt="Pitch Deck">
+      <div class="event-text">
+        <h3>Pitch Deck</h3>
+        <p>Pitch Deck, organized by AMAL Club at Kalakriti 2025, challenged teams to pitch quirky product ideas on the spot, boosting creativity, teamwork, and public speaking. Winners impressed with originality, humor, and quick thinking.</p>
       </div>
-      <div class="feature">
-        <h2>MOCK PARLIAMENT</h2>
-        <p><em>Debate. Discuss. Decide</em></p>
-        <p>The AMAL Mock Parliament is a flagship event designed to simulate real parliamentary proceedings, giving participants a platform to debate, strategize, and engage in policy-making discussions. This high-energy event allows students to step into the roles of Members of Parliament (MPs), the Speaker, Prime Minister, and Leader of the Opposition, tackling critical national and global issues.</p>
-      </div>
-      <div class="feature">
-        <h2>MASTERING THE MIC</h2>
-        <p><em>Speak with Confidence. Persuade with Power!</em></p>
-        <p>Mastering the Mic is an exclusive public speaking and communication workshop by the AMAL Club, designed to help participants develop confidence, articulate ideas effectively, and command an audience with impact. Whether you’re a beginner or an experienced speaker, this workshop will provide practical techniques and hands-on exercises to sharpen your oratory skills.</p>
-      </div>
-    </section>
+    </div>
 
-    <section class="social-footer">
-      <h3>Follow Us</h3>
+    <div class="event-block fade-right" style="flex-direction: row-reverse;" data-year="previous">
+      <img src="event_n2.jpg" alt="Management Monopoly">
+      <div class="event-text">
+        <h3>Management Monopoly</h3>
+        <p>At Kalanjali 2025, AMAL Club hosted Management Games that tested students' problem-solving, communication, and teamwork through real-time challenges. Three winning teams were awarded mementos for their standout performance across all rounds.</p>
+      </div>
+    </div>
+
+    <div class="event-block fade-left" data-year="previous">
+      <img src="EVENT_01.jpg" alt="Leadership Bootcamp">
+      <div class="event-text">
+        <h3>Innovate X</h3>
+        <p>Innovate X is AMAL's premier entrepreneurial challenge where participants step into the shoes of startup founders and business strategists.
+          This 2 day workshop encourages students to ideate, develop, and pitch their innovative business solutions to a panel of industry experts and investors.
+        </p>
+      </div>
+    </div>
+
+    <div class="event-block fade-right" style="flex-direction: row-reverse;" data-year="previous">
+      <img src="MCK02.jpg" alt="Idea Pitching Contest">
+      <div class="event-text">
+        <h3>Mock Parliament</h3>
+        <p>The AMAL Mock Parliament is a flagship event designed to simulate the workings of the Indian Parliament, allowing students to experience real policymaking, debate, and leadership in action. Participants take on roles such as MPs, the Speaker, Prime Minister, and the Leader of Opposition, engaging in heated debates, bill drafting, and voting procedures.</p>
+      </div>
+    </div>
+
+    <div class="event-block fade-left" data-year="previous">
+      <img src="EVENT_03.jpg" alt="Team Synergy Challenge">
+      <div class="event-text">
+        <h3>LinkedIn Optimization</h3>
+        <p>The LinkedIn Optimization Workshop by AMAL Club is designed to help students build a strong professional presence, network effectively, and unlock career opportunities. Whether you're new to LinkedIn or looking to enhance your personal brand, this workshop will provide insider strategies to make your profile stand out!</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-footer">
+      <img src="02.png" alt="AMAL Club Logo" />
+      <p>Follow Us</p>
       <div class="social-icons">
         <a href="https://www.instagram.com/amal_amritabengaluru/?__pwa=1#"><i class="fab fa-instagram"></i></a>
         <a href="https://www.linkedin.com/in/amal-club-amrita-bengaluru/"><i class="fab fa-linkedin"></i></a>
         <a href="https://www.youtube.com/@AMALClub_amrita"><i class="fab fa-youtube"></i></a>
       </div>
-    </section>
-
-    <div class="bottom-logo">
-      <img src="02.png" alt="Bottom Left Logo">
     </div>
+    <p>&copy; 2025 AMAL Club | All rights reserved</p>
+  </footer>
 
-    <footer>
-      <p>&copy; 2025 AMAL Club | All rights reserved</p>
-    </footer>
-
-    <button class="theme-toggle" onclick="toggleTheme()">
-      <i class="fas fa-adjust"></i>
-    </button>
-  </main>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.2 });
 
-    function toggleTheme() {
-      document.body.classList.toggle("dark");
-      document.body.classList.toggle("light");
-    }
+    document.querySelectorAll('.event-block').forEach(block => {
+      observer.observe(block);
+    });
 
     const currentLocation = location.href;
     const menuItem = document.querySelectorAll('nav ul li a');
@@ -366,6 +389,41 @@
       if (link.href === currentLocation) {
         link.classList.add('active');
       }
+    });
+
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const eventBlocks = document.querySelectorAll('.event-block');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        // Filter events
+        eventBlocks.forEach(block => {
+          const eventYear = block.getAttribute('data-year');
+          
+          if (filter === 'all') {
+            block.classList.remove('hidden');
+          } else if (filter === '2025') {
+            if (eventYear === '2025') {
+              block.classList.remove('hidden');
+            } else {
+              block.classList.add('hidden');
+            }
+          } else if (filter === 'previous') {
+            if (eventYear !== '2025') {
+              block.classList.remove('hidden');
+            } else {
+              block.classList.add('hidden');
+            }
+          }
+        });
+      });
     });
   </script>
 
