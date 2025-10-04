@@ -38,7 +38,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: #550000; /* Maroon */
       padding: 0.01rem 2rem;
       color: #fff;
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -79,7 +79,24 @@
       color: #fff;
       text-decoration: none;
       font-weight: 500;
+      position: relative;
       transition: color 0.3s;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #fdd835;
+      transition: width 0.3s;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
     }
 
     nav ul li a:hover,
@@ -91,35 +108,76 @@
       margin-top: -100px; 
     }
 
-    .hero {
-      background: url('BG_01.jpg') center/cover no-repeat;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      color: white;
-      position: relative;
-    }
+.carousel {
+  position: relative;
+  width: 100vw;
+  height: 100vh; 
+  max-height: 800px;
+  overflow: hidden;
+}
 
-    .hero h1 {
-      font-size: 3rem;
-      text-shadow: 2px 2px 6px #000;
-    }
+.carousel-inner {
+  display: flex;
+  height: 100%;
+  animation: slide 18s infinite;
+}
 
-    .hero p {
-      font-size: 1.2rem;
-      margin: 1rem 0;
-    }
+.carousel-item {
+  flex: 0 0 100%; /* Each slide takes full width */
+  position: relative;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fill space nicely without distortion */
+  display: block;
+}
+
+.carousel-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2;
+  padding: 10px;
+  max-width: 90%;
+}
+
+.carousel-content h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 6px #000;
+}
+
+.carousel-content p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+@keyframes slide {
+  0%, 30% { transform: translateX(0); }
+  33%, 63% { transform: translateX(-100%); }
+  66%, 96% { transform: translateX(-200%); }
+  100% { transform: translateX(0); }
+}
+
+
 
     .btn {
-      background: #fdd835;
-      color: #000;
+      background: linear-gradient(45deg, #550000, #fdd835);
+      color: #fff;
       padding: 0.7rem 1.5rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
     }
 
     .section-split {
@@ -162,10 +220,11 @@
       background: rgba(255, 255, 255, 0.1);
       padding: 2rem;
       border-radius: 10px;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
     }
 
     .feature:hover {
@@ -201,8 +260,8 @@
     footer {
       text-align: center;
       padding: 1rem;
-      background: #111;
-      color: #fff;
+      background: #550000;
+      color: #fdd835;
     }
 
     .theme-toggle {
@@ -256,6 +315,24 @@
       .bottom-logo img {
         height: 60px;
       }
+
+      /* 🎠 Carousel Image Styling */
+.carousel-item img {
+  width: 100%;               /* Full width of carousel */
+  height: auto;              /* Keep natural aspect ratio */
+  max-height: 500px;         /* Prevent images from being too tall */
+  object-fit: contain;       /* Show full image, no zoom/crop */
+  margin: auto;              /* Center image */
+  border-radius: 12px;       /* Rounded corners for elegance */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Soft shadow */
+  transition: transform 0.5s ease-in-out;   /* Smooth transition */
+}
+
+/* Optional: subtle zoom on hover */
+.carousel-item img:hover {
+  transform: scale(1.02);
+}
+
     }
   </style>
 </head>
@@ -273,7 +350,7 @@
           <li><a href="about.html">About</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="live_events.html">Live Events</a></li>
-          <li><a href="Leadership.html">Leadership</a></li>
+          <li><a href="leadership.html">Leadership</a></li>
         </ul>
       </nav>
     </div>
@@ -281,13 +358,36 @@
 
   <main>
 
-    <section class="hero">
-      <h1>Empowering Tomorrow’s Leaders</h1>
-      <p></p>
-      <p></p>
-      <p>Leadership | Management | Communication</p>
-      <a href="about.html" class="btn">Explore AMAL</a>
-    </section>
+    <!-- Carousel -->
+    <section class="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item">
+      <img src="IMG_3575.jpg" alt="Slide 1">
+      <div class="carousel-content">
+        <h1>Empowering Tomorrow’s Leaders</h1>
+        <p>Leadership | Management | Communication</p>
+        <a href="about.html" class="btn">Explore AMAL</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="01.jpg" alt="Slide 2">
+      <div class="carousel-content">
+        <h1>Inspiring Change</h1>
+        <p>Workshops | Events | Simulations</p>
+        <a href="events.html" class="btn">Our Events</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="03.jpg" alt="Slide 3">
+      <div class="carousel-content">
+        <h1>Fostering Leadership at Amrita</h1>
+        <p>Education for life, education for living</p>
+        <a href="leadership.html" class="btn">Meet Our Leaders</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <section class="section-split" data-aos="fade-right">
       <div class="text">
@@ -314,18 +414,18 @@
     <section class="features" data-aos="fade-up">
       <h2 style="text-align:center; width:100%; font-size:2.5rem; margin-bottom:2rem;">Our Events</h2>
       <div class="feature">
-        <h2>INNOVATE X</h2>
-        <p>The Innovate X Leadership Workshop is an exclusive collaboration between the AMAL Club and ACE (Amrita Centre for Entrepreneurship), designed to empower students with essential leadership, management, and entrepreneurial skills.</p>
+        <h2>💡 INNOVATE X</h2>
+        <p>The Innovate X Leadership Workshop is an exclusive collaboration between the AMAL Club and ACE (Amrita Centre for Entrepreneurship), designed to empower students with essential leadership, management, and entrepreneurial skills.</p>
       </div>
       <div class="feature">
-        <h2>MOCK PARLIAMENT</h2>
+        <h2>🏛 MOCK PARLIAMENT</h2>
         <p><em>Debate. Discuss. Decide</em></p>
-        <p>The AMAL Mock Parliament is a flagship event designed to simulate real parliamentary proceedings, giving participants a platform to debate, strategize, and engage in policy-making discussions. This high-energy event allows students to step into the roles of Members of Parliament (MPs), the Speaker, Prime Minister, and Leader of the Opposition, tackling critical national and global issues.</p>
+        <p>The AMAL Mock Parliament is a flagship event designed to simulate real parliamentary proceedings, giving participants a platform to debate, strategize, and engage in policy-making discussions.</p>
       </div>
       <div class="feature">
-        <h2>MASTERING THE MIC</h2>
+        <h2>🎤 MASTERING THE MIC</h2>
         <p><em>Speak with Confidence. Persuade with Power!</em></p>
-        <p>Mastering the Mic is an exclusive public speaking and communication workshop by the AMAL Club, designed to help participants develop confidence, articulate ideas effectively, and command an audience with impact. Whether you’re a beginner or an experienced speaker, this workshop will provide practical techniques and hands-on exercises to sharpen your oratory skills.</p>
+        <p>Mastering the Mic is an exclusive public speaking and communication workshop by the AMAL Club, designed to help participants develop confidence and sharpen their oratory skills.</p>
       </div>
     </section>
 

@@ -8,276 +8,298 @@
 
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+body {
+  background-color: #fff;
+  color: #212529;
+  line-height: 1.6;
+}
 
-    body {
-      background-color: #fff;
-      color: #212529;
-      line-height: 1.6;
-    }
+/* Navbar */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #550000;
+  padding: 0.01rem 2rem;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: rgba(46, 35, 33, 0.9);
-      padding: 0.01rem 2rem;
-      color: #fff;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-    }
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
 
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-    }
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+.nav-left img {
+  height: 75px;
+  width: auto;
+}
 
-    .nav-left img {
-      height: 75px;
-      width: auto;
-    }
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fdd835;
+}
 
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #fdd835;
-    }
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s;
+}
 
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #fdd835;
+  transition: width 0.3s;
+}
 
-    nav ul li a:hover,
-    nav ul li a.active {
-      color: #fdd835;
-    }
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
+}
 
-    .top-banner {
-      height: 85vh;
-      background: url('05.jpg') no-repeat center center/cover;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+nav ul li a:hover,
+nav ul li a.active {
+  color: #fdd835;
+}
 
-    .events-heading {
-      text-align: center;
-      padding: 2rem 1rem;
-    }
+/* Footer */
+footer {
+  background-color: #550000;
+  color: #fdd835;
+  padding: 2rem 1rem;
+  text-align: center;
+}
 
-    .events-heading h1 {
-      font-size: 2.5rem;
-    }
+.social-footer {
+  text-align: center;
+  margin-bottom: 1rem;
+}
 
-    .filter-container {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 2rem 0;
-      flex-wrap: wrap;
-    }
+.social-footer img {
+  width: 60px;
+  margin-bottom: 1rem;
+}
 
-    .filter-btn {
-      padding: 0.75rem 2rem;
-      background-color: #2e2321;
-      color: white;
-      border: 2px solid #2e2321;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
+.social-footer p {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
 
-    .filter-btn:hover {
-      background-color: #fdd835;
-      border-color: #fdd835;
-      color: #2e2321;
-      transform: translateY(-2px);
-    }
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
 
-    .filter-btn.active {
-      background-color: #fdd835;
-      border-color: #fdd835;
-      color: #2e2321;
-    }
+.social-icons a {
+  color: white;
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+}
 
-    .events-content {
-      background: #fff;
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
+.social-icons a:hover {
+  transform: scale(1.3);
+  color: #fdd835;
+}
 
-    .events-content > p {
-      font-size: 1.1rem;
-      margin-bottom: 3rem;
-      text-align: center;
-      color: #333;
-    }
+/* Events page specific */
+.top-banner {
+  height: 80vh;
+  background: url('05.jpg') no-repeat center center/cover;
+  position: relative;
+}
 
-    .event-block {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 4rem;
-      gap: 2rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
+.events-heading {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+}
 
-    .event-block.hidden {
-      display: none;
-    }
+.events-heading h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
 
-    .event-block img {
-      width: 100%;
-      max-width: 450px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
 
-    .event-text {
-      flex: 1;
-      min-width: 280px;
-      text-align: center;
-    }
+.filter-btn {
+  padding: 0.75rem 2rem;
+  background-color: #2e2321;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
 
-    .event-text h3 {
-      color: #fdd835;
-      margin-bottom: 1rem;
-    }
+.filter-btn:hover {
+  background-color: #fdd835;
+  color: #2e2321;
+}
 
-    .event-text p {
-      color: #555;
-      text-align: center;
-    }
+.filter-btn.active {
+  background-color: #fdd835;
+  color: #2e2321;
+}
 
-    .event-year {
-      display: inline-block;
-      background-color: #2e2321;
-      color: #fdd835;
-      padding: 0.25rem 0.75rem;
-      border-radius: 15px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
+.events-content {
+  background: #fff;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    .fade-left.in-view {
-      animation: fadeLeft 4s ease forwards;
-    }
+.events-content > p {
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: #555;
+}
 
-    .fade-right.in-view {
-      animation: fadeRight 4s ease forwards;
-    }
+.event-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  gap: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
-    @keyframes fadeLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
+.event-block.hidden {
+  display: none;
+}
 
-    @keyframes fadeRight {
-      from {
-        opacity: 0;
-        transform: translateX(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
+.event-block img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
-    footer {
-      background-color: #111;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
+.event-text {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+}
 
-    .social-footer img {
-      width: 60px;
-      margin-bottom: 1rem;
-    }
+.event-text h3 {
+  color: #fdd835;
+  margin-bottom: 1rem;
+}
 
-    .social-footer p {
-      font-weight: bold;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
+.event-text p {
+  color: #555;
+  text-align: center;
+}
 
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
+.event-year {
+  display: inline-block;
+  background-color: #2e2321;
+  color: #fdd835;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
 
-    .social-icons a {
-      color: white;
-      font-size: 1.8rem;
-      transition: transform 0.3s ease;
-    }
+.fade-left.in-view {
+  animation: fadeLeft 1s ease forwards;
+}
 
-    .social-icons a:hover {
-      transform: scale(1.3);
-      color: #fdd835;
-    }
+.fade-right.in-view {
+  animation: fadeRight 1s ease forwards;
+}
 
-    @media (max-width: 768px) {
-      .event-block {
-        flex-direction: column !important;
-        text-align: center;
-      }
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
-      .event-block img {
-        max-width: 100%;
-      }
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
-      nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+@media (max-width: 768px) {
+  .event-block {
+    flex-direction: column !important;
+    text-align: center;
+  }
 
-      .filter-btn {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.9rem;
-      }
-    }
+  .event-block img {
+    max-width: 100%;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
   </style>
+
+
 </head>
 <body>
 
@@ -325,7 +347,7 @@
     </div>
 
     <div class="event-block fade-right" style="flex-direction: row-reverse;" data-year="2025">
-      <img src="event_n3.jpg" alt="Night Shift">
+      <img src="nightshift.jpeg" alt="Night Shift">
       <div class="event-text">
         <h3>Night Shift</h3>
         <p>ACE and AMAL Clubs hosted "The Night Shift," a thrilling overnight startathon where teams tackled SDG challenges, built prototypes, and pitched ideas. The event boosted creativity, teamwork, and entrepreneurial skills with a ₹12,000 prize pool. It also featured an inspiring session by Ms. Rubina Amalraj, motivating future changemakers.</p>

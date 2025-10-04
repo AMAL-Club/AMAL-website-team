@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link rel="icon" type="image/png" href="logo.png">
+<link rel="icon" type="image/png" href="logo.png">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Leadership | AMAL Club</title>
 
-  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
 
   <style>
@@ -27,7 +26,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background-color:  rgba(46, 35, 33, 0.9);
+      background-color: #550000;
       padding: 0.01rem 2rem;
       color: #fff;
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -68,7 +67,24 @@
       color: #fff;
       text-decoration: none;
       font-weight: 500;
+      position: relative;
       transition: color 0.3s;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #fdd835;
+      transition: width 0.3s;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
     }
 
     nav ul li a:hover,
@@ -117,27 +133,6 @@
       text-align: center;
     }
 
-    .leadership-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-    .member-card {
-  text-align: center;
-  margin: 10px;
-}
-
-.member-name {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.member-position {
-  font-size: 14px;
-  color: gray;
-}
-
     .row {
       display: flex;
       flex-wrap: wrap;
@@ -150,6 +145,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
     }
 
     .member-card img {
@@ -164,16 +160,17 @@
       margin-top: 10px;
     }
 
-    .member-role {
+    .member-position {
       color: #fdd835;
       font-size: 1rem;
     }
 
     .role-title {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       margin: 3rem 0 1rem;
       font-weight: bold;
       color: #444;
+      text-align: center;
     }
 
     .section-divider {
@@ -185,10 +182,15 @@
     }
 
     footer {
-      background-color: #111;
-      color: white;
+      background-color: #550000;
+      color: #fdd835;
       padding: 2rem 1rem;
       text-align: center;
+    }
+
+    .social-footer {
+      text-align: center;
+      margin-bottom: 1rem;
     }
 
     .social-footer img {
@@ -234,280 +236,301 @@
       .leadership-content {
         padding: 2rem 1rem;
       }
-      
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="header-container">
-      <div class="nav-left">
-        <img src="02.png" alt="AMAL Logo" />
-        <div class="logo-text">AMRITA MANAGEMENT AND LEADERSHIP CLUB</div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="live_events.html">Live Events</a></li>
-          <li><a href="Leadership.html">Leadership</a></li>
-        </ul>
-      </nav>
-      
+<header>
+  <div class="header-container">
+    <div class="nav-left">
+      <img src="02.png" alt="AMAL Logo" />
+      <div class="logo-text">AMRITA MANAGEMENT AND LEADERSHIP CLUB</div>
     </div>
-  </header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="live_events.html">Live Events</a></li>
+        <li><a href="Leadership.html" class="active">Leadership</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-  <section class="top-banner"></section>
+<section class="top-banner"></section>
 
-  <section class="leadership-heading">
-    <h1>Meet Our Leadership</h1>
-  </section>
+<section class="leadership-heading">
+  <h1>Meet Our Leadership</h1>
+</section>
 
-  <section class="leadership-content">
-    <p>
-      At AMAL Club, leadership is at the heart of everything we do. Our dedicated team of visionary thinkers, strategists, and changemakers works tirelessly to create impactful experiences, foster collaboration, and drive innovation. Together, we empower students to become confident leaders, effective communicators, and forward-thinking professionals
-    </p>
-  </section>
+<section class="leadership-content">
+  <p>
+    At AMAL Club, leadership is at the heart of everything we do. Our dedicated team of visionary thinkers, strategists, and changemakers works tirelessly to create impactful experiences, foster collaboration, and drive innovation.
+  </p>
+</section>
 
-  <section class="leadership-section">
-    <h2>Leadership Team</h2>
-
-    
-    <div class="row">
-      <div class="member-card">
-        <img src="PC01.jpg" alt="Founder" />
-        <div class="member-name">Prof. Sriram Devanathan</div>
-        <div class="member-position">Founder</div>
-      </div>
-      <div class="member-card">
-        <img src="PC02.jpg" alt="Mentor" />
-        <div class="member-name">Ankit Jain</div>
-        <div class="member-position">Mentor</div>
-      </div>
-      <div class="member-card">
-        <img src="EX10.jpg" alt="President" />
-        <div class="member-name">Kanishka</div>
-        <div class="member-position">President</div>
-      </div>
-      <div class="member-card">
-        <img src="PC04.jpg" alt="Vice President" />
-        <div class="member-name">Sanskar Deopuje</div>
-        <div class="member-position">Vice President</div>
-      </div>
+<section class="leadership-section">
+  <!-- Leadership Team -->
+  <h2 class="role-title">Leadership Team</h2>
+  <div class="row">
+    <div class="member-card">
+      <img src="PC01.jpg" alt="Founder" />
+      <div class="member-name">Prof. Sriram Devanathan</div>
+      <div class="member-position">Founder</div>
     </div>
-    
-
-    <div class="row" style="justify-content: center;">
-      <div class="member-card">
-        <img src="PC05.jpg" alt="Vice President 2" />
-        <div class="member-name">Saanvi</div>
-        <div class="member-position">Vice President </div>
-      </div>
-      <div class="member-card">
-        <img src="PC06.jpg" alt="Treasurer" />
-        <div class="member-name">Ashrita</div>
-        <div class="member-position">Treasurer</div>
-      </div>
+    <div class="member-card">
+      <img src="PC02.jpg" alt="Mentor" />
+      <div class="member-name">Ankit Jain</div>
+      <div class="member-position">Mentor</div>
     </div>
-    
-
-    <hr class="section-divider" style="background: linear-gradient(to right, maroon, transparent);" />
-
-    <div class="role-title">Event Management Team</div>
-    <div class="row">
-      <div class="member-card">
-        <img src="EM01.jpg" alt="Chair 1" />
-        <div class="member-name">NandaKrishna J</div>
-        <div class="member-position">3rd year ECE</div>
-      </div>
-      <div class="member-card">
-        <img src="EM02.jpeg" alt="Chair 2" />
-        <div class="member-name">Viraj Tayshete</div>
-        <div class="member-position">3rd year RAE</div>
-      </div>
-      <div class="member-card">
-        <img src="EM03.jpg" alt="Chair 3" />
-        <div class="member-name">Neha S</div>
-        <div class="member-position">3rd year AIE</div>
-      </div>
-      <div class="member-card">
-        <img src="EM04.jpeg" alt="Chair 4" />
-        <div class="member-name">Josheni K S</div>
-        <div class="member-position">2nd year AID</div>
-      </div>
-      <div class="member-card">
-        <img src="EM05.jpeg" alt="Chair 5" />
-        <div class="member-name">Ch. Sriya bharathi</div>
-        <div class="member-position">2nd year EACr</div>  
-      </div>
-      <div class="member-card"> 
-        <img src="EM06.jpg" alt="Chair 6" />
-        <div class="member-name">Divyanshi Dixit</div>
-        <div class="member-position">1st Year RAE</div>
-      </div>
-      <div class="member-card"> 
-        <img src="EM07.jpg" alt="Chair 7" />
-        <div class="member-name">Shainehaa VT</div>
-        <div class="member-position">1st Year RAE</div>
-      </div>
-      <div class="member-card"> 
-        <img src="EM08.jpg" alt="Chair 8" />
-        <div class="member-name">Mukund Madhav Dwivedi</div>
-        <div class="member-position">1st Year ECE</div>
-      </div>
+    <div class="member-card">
+      <img src="EX10.jpg" alt="President" />
+      <div class="member-name">Kanishka</div>
+      <div class="member-position">President</div>
     </div>
-    
-
-    
-    <hr class="section-divider" style="background: linear-gradient(to right, maroon, transparent);" />
-
-<div class="role-title">Media Team</div>
-<div class="row">
-  <div class="member-card">
-    <img src="MT01.jpg" alt="Media Team Member 1" />
-    <div class="member-name">Dedeepya Kolli</div>
-    <div class="member-position">3rd year ECE</div>
-  </div>
-  <div class="member-card">
-    <img src="MT02.jpg" alt="Media Team Member 2" />
-    <div class="member-name">SHIVANI RAM R. A.</div>
-    <div class="member-position">3rd year ECE</div>
-  </div>
-  <div class="member-card">
-    <img src="MT03.jpg" alt="Media Team Member 3" />
-    <div class="member-name">H S TARUN</div>
-    <div class="member-position">2rd year ECE</div>
-  </div>
-  <div class="member-card">
-    <img src="MT04.jpg" alt="Media Team Member 4" />
-    <div class="member-name">Motamarri Kanaka Varsha</div>
-    <div class="member-position">2rd year ELC</div>
-  </div>
-  <div class="member-card">
-    <img src="MT05.jpg" alt="Media Team Member 5" />
-    <div class="member-name">Aditya S Prabhakar</div>
-    <div class="member-position">2rd year ECE</div>
-  </div>
-  <div class="member-card">
-    <img src="MT06.jpg" alt="Media Team Member 6" />
-    <div class="member-name">Jeevietha</div>
-    <div class="member-position">2rd year AIE</div>
-  </div>
-  <div class="member-card">
-    <img src="MT07.jpeg" alt="Media Team Member 7" />
-    <div class="member-name">Chaithanya</div>
-    <div class="member-position">1rd year AIE</div>
-  </div>
-</div>
-
-
-<hr class="section-divider" style="background: linear-gradient(to right, maroon, transparent);" />
-
-<div class="role-title">Outreach Team</div>
-<div class="row">
-  <div class="member-card">
-    <img src="OT01.jpg" alt="Outreach Member 1" />
-    <div class="member-name">Tanvi Reddy</div>
-    <div class="member-position">3rd year ECE</div>
-  </div>
-  <div class="member-card">
-    <img src="OT02.jpg" alt="Outreach Member 2" />
-    <div class="member-name">C.Shri Shyam Charan</div>
-    <div class="member-position">3rd year ECE</div>
-  </div>
-  <div class="member-card">
-    <img src="OT03.jpg" alt="Outreach Member 3" />
-    <div class="member-name">SABITH P</div>
-    <div class="member-position">2rd year ELC</div>
-  </div>
-  <div class="member-card">
-    <img src="OT04.jpg" alt="Outreach Member 4" />
-    <div class="member-name">Varshith P</div>
-    <div class="member-position">2rd year EEE</div>
-  </div>
-  <div class="member-card">
-    <img src="OT05.jpg" alt="Outreach Member 5" />
-    <div class="member-name">Pragathi L</div>
-    <div class="member-position">1rd year AIE</div>
-  </div>
-</div>
-
-<hr class="section-divider" style="background: linear-gradient(to right, maroon, transparent);" />
-
-<div class="role-title">Technical Team</div>
-<div class="row">
-  <div class="member-card">
-    <img src="TT01.jpeg" alt="Technical Member 1" />
-    <div class="member-name">jiya Borikar</div>
-    <div class="member-position">3rd year AIE</div>
-  </div>
-  <div class="member-card">
-    <img src="TT02.jpg" alt="Technical Member 2" />
-    <div class="member-name">Navnita krishnan</div>
-    <div class="member-position">2rd year CSE</div>
-  </div>
-  <div class="member-card">
-    <img src="TT03.jpg" alt="Technical Member 3" />
-    <div class="member-name">Rohini B</div>
-    <div class="member-position">2rd year AIE</div>
-  </div>
-</div>
-
-
-<hr class="section-divider" style="background: linear-gradient(to right, maroon, transparent);" />
-
-<div class="role-title">Documentation & Report Team</div>
-<div class="row">
-  <div class="member-card">
-    <img src="DR01.jpg" alt="Documentation Member 1" />
-    <div class="member-name">M V Karthik Krishna</div>
-    <div class="member-position">3rd year MEE</div>
-  </div>
-  <div class="member-card">
-    <img src="DR02.jpg" alt="Documentation Member 2" />
-    <div class="member-name">P VINEETH ANAND</div>
-    <div class="member-position">3rd year ECE</div>
-  </div>
-  <div class="member-card">
-    <img src="DR03.jpg" alt="Documentation Member 3" />
-    <div class="member-name">Niyatee Gamre</div>
-    <div class="member-position">1st year CSE</div>
-  </div>
-  <div class="member-card">
-    <img src="DR04.jpg" alt="Documentation Member 4" />
-    <div class="member-name">Abhiram Muktha</div>
-    <div class="member-position">1st year ECE</div>
-  </div>
-</div>
-
-<hr class="section-divider" style="background: linear-gradient(to right, maroon, transparent);" />
-
-  </section>
-
-  <footer>
-    <div class="social-footer">
-      <img src="02.jpg" alt="AMAL Club Logo" />
-      <p>Follow Us</p>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/amal_amritabengaluru/?__pwa=1#"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/amal-club-amrita-bengaluru/"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.youtube.com/@AMALClub_amrita"><i class="fab fa-youtube"></i></a>
-      </div>
+    <div class="member-card">
+      <img src="OB02.jpeg" alt="Vice President" />
+      <div class="member-name">Sanskar Deopuje</div>
+      <div class="member-position">Vice President</div>
     </div>
-    <p>&copy; 2025 AMAL Club | All rights reserved</p>
-  </footer>
+    <div class="member-card">
+      <img src="OB03.jpeg" alt="Vice President 2" />
+      <div class="member-name">Saanvi</div>
+      <div class="member-position">Vice President</div>
+    </div>
+    <div class="member-card">
+      <img src="OB04.jpg" alt="Treasurer" />
+      <div class="member-name">Ashrita</div>
+      <div class="member-position">Treasurer</div>
+    </div>
+  </div>
 
-  <script>
-    const currentLocation = location.href;
-    const menuItem = document.querySelectorAll('nav ul li a');
-    menuItem.forEach(link => {
-      if (link.href === currentLocation) {
-        link.classList.add('active');
-      }
-    });
-  </script>
+  <hr class="section-divider" />
+
+  <!-- Team Leads -->
+  <h2 class="role-title">Team Leads</h2>
+  <div class="row">
+    <div class="member-card">
+      <img src="EM04.jpeg" alt="Chair 4" />
+      <div class="member-name">Josheni K S</div>
+      <div class="member-position">Event Management Head</div>
+    </div>
+    <div class="member-card">
+      <img src="MT01.jpg" alt="Media Team Member 1" />
+      <div class="member-name">Dedeepya Kolli</div>
+      <div class="member-position">Media Team Head</div>
+    </div>
+    <div class="member-card">
+      <img src="OT01.jpeg" alt="Outreach Member 1" />
+      <div class="member-name">Tanvi Reddy</div>
+      <div class="member-position">OutReach head</div>
+    </div>
+    <div class="member-card">
+      <img src="TT01.jpeg" alt="Technical Member 1" />
+      <div class="member-name">Jiya Borikar</div>
+      <div class="member-position">Technical Head</div>
+    </div>
+    <div class="member-card">
+      <img src="DR03.jpg" alt="Documentation Member 3" />
+      <div class="member-name">Niyatee Gamre</div>
+      <div class="member-position">Documentation & Report</div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- Event Management Team -->
+  <h2 class="role-title">Event Management Team</h2>
+  <div class="row">
+    <div class="member-card">
+      <img src="EM02.jpeg" alt="Chair 2" />
+      <div class="member-name">Viraj Tayshete</div>
+      <div class="member-position">3rd year RAE</div>
+    </div>
+    <div class="member-card">
+      <img src="EM03.jpg" alt="Chair 3" />
+      <div class="member-name">Neha S</div>
+      <div class="member-position">3rd year AIE</div>
+    </div>
+    <div class="member-card">
+      <img src="EM01.jpg" alt="Chair 1" />
+      <div class="member-name">NandaKrishna J</div>
+      <div class="member-position">3rd year ECE</div>
+    </div>
+    <div class="member-card">
+      <img src="EM05.jpeg" alt="Chair 5" />
+      <div class="member-name">Ch. Sriya bharathi</div>
+      <div class="member-position">2nd year EACr</div>
+    </div>
+    <div class="member-card">
+      <img src="EM06.jpg" alt="Chair 6" />
+      <div class="member-name">Divyanshi Dixit</div>
+      <div class="member-position">1st Year RAE</div>
+    </div>
+    <div class="member-card">
+      <img src="EM07.jpg" alt="Chair 7" />
+      <div class="member-name">Shainehaa VT</div>
+      <div class="member-position">1st Year RAE</div>
+    </div>
+    <div class="member-card">
+      <img src="EM08.jpg" alt="Chair 8" />
+      <div class="member-name">Mukund Madhav Dwivedi</div>
+      <div class="member-position">1st Year ECE</div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- Media Team -->
+  <h2 class="role-title">Media Team</h2>
+  <div class="row">
+    <div class="member-card">
+      <img src="MT01.jpg" alt="Media Team Member 1" />
+      <div class="member-name">Dedeepya Kolli</div>
+      <div class="member-position">3rd year ECE</div>
+    </div>
+    <div class="member-card">
+      <img src="MT02.jpg" alt="Media Team Member 2" />
+      <div class="member-name">SHIVANI RAM R. A.</div>
+      <div class="member-position">3rd year ECE</div>
+    </div>
+    <div class="member-card">
+      <img src="MT03.jpg" alt="Media Team Member 3" />
+      <div class="member-name">H S TARUN</div>
+      <div class="member-position">2rd year ECE</div>
+    </div>
+    <div class="member-card">
+      <img src="MT04.jpg" alt="Media Team Member 4" />
+      <div class="member-name">Motamarri Kanaka Varsha</div>
+      <div class="member-position">2rd year ELC</div>
+    </div>
+    <div class="member-card">
+      <img src="MT05.jpg" alt="Media Team Member 5" />
+      <div class="member-name">Aditya S Prabhakar</div>
+      <div class="member-position">2rd year ECE</div>
+    </div>
+    <div class="member-card">
+      <img src="MT06.jpg" alt="Media Team Member 6" />
+      <div class="member-name">Jeevietha</div>
+      <div class="member-position">2rd year AIE</div>
+    </div>
+    <div class="member-card">
+      <img src="MT07.jpeg" alt="Media Team Member 7" />
+      <div class="member-name">Chaithanya</div>
+      <div class="member-position">1rd year AIE</div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- Outreach Team -->
+  <h2 class="role-title">Outreach Team</h2>
+  <div class="row">
+    <div class="member-card">
+      <img src="OT01.jpeg" alt="Outreach Member 1" />
+      <div class="member-name">Tanvi Reddy</div>
+      <div class="member-position">3rd year ECE</div>
+    </div>
+    <div class="member-card">
+      <img src="OT02.jpg" alt="Outreach Member 2" />
+      <div class="member-name">C.Shri Shyam Charan</div>
+      <div class="member-position">3rd year ECE</div>
+    </div>
+    <div class="member-card">
+      <img src="OT03.jpg" alt="Outreach Member 3" />
+      <div class="member-name">SABITH P</div>
+      <div class="member-position">2rd year ELC</div>
+    </div>
+    <div class="member-card">
+      <img src="OT04.jpg" alt="Outreach Member 4" />
+      <div class="member-name">Varshith P</div>
+      <div class="member-position">2rd year EEE</div>
+    </div>
+    <div class="member-card">
+      <img src="OT05.jpg" alt="Outreach Member 5" />
+      <div class="member-name">Pragathi L</div>
+      <div class="member-position">1rd year AIE</div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- Technical Team -->
+  <h2 class="role-title">Technical Team</h2>
+  <div class="row">
+    <div class="member-card">
+      <img src="TT01.jpeg" alt="Technical Member 1" />
+      <div class="member-name">Jiya Borikar</div>
+      <div class="member-position">3rd year AIE</div>
+    </div>
+    <div class="member-card">
+      <img src="TT02.jpg" alt="Technical Member 2" />
+      <div class="member-name">Navnita Krishnan</div>
+      <div class="member-position">2rd year CSE</div>
+    </div>
+    <div class="member-card">
+      <img src="TT03.jpg" alt="Technical Member 3" />
+      <div class="member-name">Rohini B</div>
+      <div class="member-position">2rd year AIE</div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- Documentation Team -->
+  <h2 class="role-title">Documentation & Report Team</h2>
+  <div class="row">
+    <div class="member-card">
+      <img src="DR01.jpg" alt="Documentation Member 1" />
+      <div class="member-name">M V Karthik Krishna</div>
+      <div class="member-position">3rd year MEE</div>
+    </div>
+    <div class="member-card">
+      <img src="DR02.jpg" alt="Documentation Member 2" />
+      <div class="member-name">P Vineeth Anand</div>
+      <div class="member-position">3rd year ECE</div>
+    </div>
+    <div class="member-card">
+      <img src="DR03.jpg" alt="Documentation Member 3" />
+      <div class="member-name">Niyatee Gamre</div>
+      <div class="member-position">1st year CSE</div>
+    </div>
+    <div class="member-card">
+      <img src="DR04.jpg" alt="Documentation Member 4" />
+            <div class="member-name">Abhiram Muktha</div>
+      <div class="member-position">1st year ECE</div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+</section>
+
+<footer>
+  <div class="social-footer">
+    <img src="02.jpg" alt="AMAL Club Logo" />
+    <p>Follow Us</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/amal_amritabengaluru/?__pwa=1#"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/amal-club-amrita-bengaluru/"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.youtube.com/@AMALClub_amrita"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <p>&copy; 2025 AMAL Club | All rights reserved</p>
+</footer>
+
+<script>
+  const currentLocation = location.href;
+  const menuItem = document.querySelectorAll('nav ul li a');
+  menuItem.forEach(link => {
+    if (link.href === currentLocation) {
+      link.classList.add('active');
+    }
+  });
+</script>
 
 </body>
 </html>
+
