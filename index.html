@@ -1,419 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="icon" type="image/png" href="logo.png">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AMAL - Amrita Management and Leadership Club</title>
+  <link rel="icon" type="image/png" href="logo.png">
 
+  <!-- Bootstrap, FontAwesome, AOS, QR & HTML5 QR libs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    :root { --maroon: #550000; --gold: #fdd835; --header-height: 100px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background:#f5f5f5; color:#111; overflow-x:hidden; }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      transition: background 0.3s, color 0.3s;
-      overflow-x: hidden;
-    }
+    /* Header */
+    header { position: sticky; top:0; z-index:1200; background:var(--maroon); color:#fff; border-bottom:1px solid rgba(255,255,255,0.12); }
+    .header-container { max-width:1200px; margin:0 auto; padding:0.75rem 1.25rem; height:var(--header-height); display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    .nav-left { display:flex; align-items:center; gap:12px; }
+    .nav-left img { height:72px; width:auto; display:block; }
+    .logo-text { color:var(--gold); font-weight:700; font-size:1.05rem; letter-spacing:.6px; }
+    nav ul { display:flex; gap:1.25rem; list-style:none; align-items:center; }
+    nav a { color:#fff; font-weight:500; position:relative; }
+    nav a::after { content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--gold); transition:width .25s; }
+    nav a:hover::after, nav a.active::after { width:100%; }
 
-    body.light {
-      background: #f5f5f5;
-      color: #111;
-    }
+    /* Carousel */
+    #heroCarousel { width:100%; }
+    .carousel-item img { width:100%; height:calc(100vh - var(--header-height)); object-fit:cover; filter:brightness(65%); }
+    .carousel-caption { top:50%; transform:translateY(-50%); z-index:2; text-align:center; }
+    .carousel-caption h1 { font-size:clamp(1.8rem,3.8vw,3.5rem); font-weight:700; color:#fff; text-shadow:0 5px 18px rgba(0,0,0,0.6); }
+    .carousel-caption p { color:#fff; margin:1rem 0; font-size:1.15rem; }
+    .carousel-caption .btn { background:linear-gradient(45deg,var(--maroon),var(--gold)); color:#fff; font-weight:700; border-radius:8px; padding:.7rem 1.4rem; border:none; box-shadow:0 8px 22px rgba(0,0,0,0.16); }
+    .carousel-indicators [data-bs-target] { background-color:var(--gold); width:12px; height:12px; border-radius:50%; }
 
-    body.dark {
-      background: #0f172a;
-      color: #f1f1f1;
-    }
+    /* Sections */
+    main { max-width:1200px; margin:0 auto; padding-bottom:4rem; }
+    section { padding:3.25rem 1.25rem; }
+    .section-split { display:grid; grid-template-columns:1fr 420px; gap:2rem; align-items:center; }
+    .section-split .text h2 { font-size:1.8rem; color:#222; margin-bottom:.6rem; }
+    .section-split .text p { color:#444; line-height:1.6; }
+    .section-split .image img { width:100%; max-width:420px; border-radius:10px; display:block; }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: #550000; /* Maroon */
-      padding: 0.01rem 2rem;
-      color: #fff;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-    }
+    .features { display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+    .feature { background:#fff; padding:1.25rem; border-radius:10px; box-shadow:0 8px 18px rgba(0,0,0,0.06); border:1px solid rgba(0,0,0,0.04); text-align:center; }
 
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-    }
+    /* Events list & filters */
+    .events-content { background:#fff; border-radius:10px; padding:2.5rem; box-shadow:0 10px 30px rgba(0,0,0,0.04); }
+    .filter-container { display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.3rem; }
+    .filter-btn { padding:.6rem 1.25rem; border-radius:999px; border:none; background:#2e2321; color:#fff; font-weight:600; cursor:pointer; }
+    .filter-btn.active { background:var(--gold); color:#2e2321; }
+    .event-block { display:flex; gap:1.25rem; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; opacity:1; transition:opacity .3s ease; }
+    .event-block.hidden { display:none; }
+    .event-block img { width:100%; max-width:450px; border-radius:10px; display:block; }
+    .event-text { flex:1; min-width:220px; text-align:left; }
+    .event-text h3 { color:var(--maroon); margin-bottom:.4rem; }
 
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    /* Leadership */
+    .leadership-section { max-width:1200px; margin:0 auto; }
+    .row { display:flex; flex-wrap:wrap; gap:1.25rem; justify-content:center; }
+    .member-card { width:180px; text-align:center; background:#fff; padding:.6rem; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.05); }
+    .member-card img { width:100%; height:230px; object-fit:cover; border-radius:8px; display:block; }
+    .member-name { font-weight:700; margin-top:.55rem; }
+    .member-position { color:var(--gold); font-size:.95rem; margin-top:.25rem; }
+    .role-title { text-align:center; margin:2rem 0 1rem; font-size:1.45rem; color:#333; }
+    .section-divider { height:2px; width:60%; margin:1.5rem auto; border:none; background:linear-gradient(to right,var(--gold),transparent); }
 
-    .nav-left img {
-      height: 75px;
-      width: auto;
-    }
+    /* Form / success */
+    .container-form { max-width:700px; margin:2rem auto; padding:1.75rem; background:#fff;border-radius:12px; box-shadow:0 15px 30px rgba(0,0,0,0.06); }
+    label { display:block; font-weight:500; margin-bottom:.3rem; color:#333; }
+    input, textarea { width:100%; padding:.75rem 1rem; border:1px solid #ccc; border-radius:8px; margin-bottom:1rem; }
 
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #fdd835;
-    }
+    /* Footer */
+    footer { background:var(--maroon); color:var(--gold); padding:1.25rem; text-align:center; }
+    .social-icons { display:flex; gap:.8rem; justify-content:center; margin-top:.6rem; }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
+    /* Back to top */
+    .back-to-top { position:fixed; right:20px; bottom:20px; z-index:1400; width:56px; height:56px; border-radius:50%; background:var(--maroon); color:var(--gold); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 28px rgba(0,0,0,0.18); cursor:pointer; border:3px solid rgba(255,255,255,0.06); font-size:1.2rem; }
+    .hidden { display:none !important; }
 
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      transition: color 0.3s;
-    }
-
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0%;
-      height: 2px;
-      background: #fdd835;
-      transition: width 0.3s;
-    }
-
-    nav ul li a:hover::after,
-    nav ul li a.active::after {
-      width: 100%;
-    }
-
-    nav ul li a:hover,
-    nav ul li a.active {
-      color: #fdd835;
-    }
-
-    main {
-      margin-top: -100px; 
-    }
-
-.carousel {
-  position: relative;
-  width: 100vw;
-  height: 100vh; 
-  max-height: 800px;
-  overflow: hidden;
-}
-
-.carousel-inner {
-  display: flex;
-  height: 100%;
-  animation: slide 18s infinite;
-}
-
-.carousel-item {
-  flex: 0 0 100%; /* Each slide takes full width */
-  position: relative;
-}
-
-.carousel-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Fill space nicely without distortion */
-  display: block;
-}
-
-.carousel-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  z-index: 2;
-  padding: 10px;
-  max-width: 90%;
-}
-
-.carousel-content h1 {
-  font-size: 3rem;
-  text-shadow: 2px 2px 6px #000;
-}
-
-.carousel-content p {
-  font-size: 1.2rem;
-  margin: 1rem 0;
-}
-
-@keyframes slide {
-  0%, 30% { transform: translateX(0); }
-  33%, 63% { transform: translateX(-100%); }
-  66%, 96% { transform: translateX(-200%); }
-  100% { transform: translateX(0); }
-}
-
-
-
-    .btn {
-      background: linear-gradient(45deg, #550000, #fdd835);
-      color: #fff;
-      padding: 0.7rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-    }
-
-    .section-split {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 4rem 2rem;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .section-split .text {
-      flex: 1 1 45%;
-      min-width: 300px;
-    }
-
-    .section-split .image {
-      flex: 1 1 40%;
-      text-align: center;
-    }
-
-    .section-split .image img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-
-    .section-split h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 4rem 2rem;
-    }
-
-    .feature {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 2rem;
-      border-radius: 10px;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-    }
-
-    .feature:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 20px rgba(0,0,0,0.3);
-    }
-
-    .feature h2 {
-      margin-bottom: 1rem;
-    }
-
-    .social-footer {
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      font-size: 1.8rem;
-    }
-
-    .social-icons a {
-      color: inherit;
-      transition: color 0.3s;
-    }
-
-    .social-icons a:hover {
-      color: #fdd835;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #550000;
-      color: #fdd835;
-    }
-
-    .theme-toggle {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background: #fdd835;
-      border: none;
-      padding: 10px;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-    .bottom-logo {
-      position: fixed;
-      bottom: 90px;
-      left: 20px;
-      z-index: 100;
-    }
-
-    .bottom-logo img {
-      height: 80px;
-      opacity: 0.9;
-    }
-
-    body.dark .section-split[style*="background:#f5f5f5;"] {
-      background: #1e293b !important;
-      color: #f1f1f1;
-    }
-
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem 0;
-      }
-
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .bottom-logo {
-        bottom: 120px;
-        left: 10px;
-        opacity: 0.8;
-      }
-
-      .bottom-logo img {
-        height: 60px;
-      }
-
-      /* 🎠 Carousel Image Styling */
-.carousel-item img {
-  width: 100%;               /* Full width of carousel */
-  height: auto;              /* Keep natural aspect ratio */
-  max-height: 500px;         /* Prevent images from being too tall */
-  object-fit: contain;       /* Show full image, no zoom/crop */
-  margin: auto;              /* Center image */
-  border-radius: 12px;       /* Rounded corners for elegance */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Soft shadow */
-  transition: transform 0.5s ease-in-out;   /* Smooth transition */
-}
-
-/* Optional: subtle zoom on hover */
-.carousel-item img:hover {
-  transform: scale(1.02);
-}
-
-    }
+    @media (max-width:980px) { .section-split { grid-template-columns: 1fr; } .carousel-caption h1 { font-size:2.2rem; } }
+    @media (max-width:640px) { .member-card { width:46%; } .member-card img { height:160px; } .header-container { height:88px; } :root { --header-height:88px; } }
   </style>
 </head>
-<body class="light">
+<body>
 
+  <!-- Header -->
   <header>
     <div class="header-container">
       <div class="nav-left">
-        <img src="02.png" alt="AMAL Logo" />
+        <img src="02.png" alt="AMAL Logo">
         <div class="logo-text">AMRITA MANAGEMENT AND LEADERSHIP CLUB</div>
       </div>
+
       <nav>
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="live_events.html">Live Events</a></li>
-          <li><a href="leadership.html">Leadership</a></li>
+          <li><a href="#index" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#leadership">Leadership</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
+  <!-- HERO / CAROUSEL -->
+  <section id="index">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="IMG_3575.jpg" class="d-block w-100" alt="Empowering Tomorrow’s Leaders">
+          <div class="carousel-caption">
+            <h1>Empowering Tomorrow’s Leaders</h1>
+            <p>Leadership | Management | Communication</p>
+            <a class="btn" href="#about">Explore AMAL</a>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="01.jpg" class="d-block w-100" alt="Inspiring Change">
+          <div class="carousel-caption">
+            <h1>Inspiring Change</h1>
+            <p>Workshops | Events | Simulations</p>
+            <a class="btn" href="#events">Our Events</a>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="03.jpg" class="d-block w-100" alt="Fostering Leadership">
+          <div class="carousel-caption">
+            <h1>Fostering Leadership at Amrita</h1>
+            <p>Education for life, education for living</p>
+            <a class="btn" href="#leadership">Meet Our Leaders</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
   <main>
-
-    
-    <!-- Carousel -->
-    <section class="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item">
-      <img src="IMG_3575.jpg" alt="Slide 1">
-      <div class="carousel-content">
-        <h1>Empowering Tomorrow’s Leaders</h1>
-        <p>Leadership | Management | Communication</p>
-        <a href="about.html" class="btn">Explore AMAL</a>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="01.jpg" alt="Slide 2">
-      <div class="carousel-content">
-        <h1>Inspiring Change</h1>
-        <p>Workshops | Events | Simulations</p>
-        <a href="events.html" class="btn">Our Events</a>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="03.jpg" alt="Slide 3">
-      <div class="carousel-content">
-        <h1>Fostering Leadership at Amrita</h1>
-        <p>Education for life, education for living</p>
-        <a href="leadership.html" class="btn">Meet Our Leaders</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-    <section class="section-split" data-aos="fade-right">
+    <!-- About -->
+    <section id="about" class="section-split" data-aos="fade-up">
       <div class="text">
         <h2>About AMAL Club</h2>
-        <p>Empowering Leaders, Inspiring Change</p>
+        <p><strong>Empowering Leaders, Inspiring Change</strong></p>
         <p>The Amrita Management and Leadership (AMAL) Club at Amrita Vishwa Vidyapeetham, Bengaluru, is a dynamic student-led organization dedicated to fostering leadership, management, and communication skills. Through interactive workshops, engaging competitions, and real-world simulations, AMAL empowers students to unlock their full potential and thrive in both personal and professional spheres.</p>
       </div>
-      <div class="image">
-        <img src="02.jpg" alt="AMAL Logo">
-      </div>
+      <div class="image" data-aos="fade-left"><img src="02.jpg" alt="AMAL Logo"></div>
     </section>
 
-    <section class="section-split" style="background:#f5f5f5;" data-aos="fade-left">
-      <div class="image">
-        <img src="03.jpg" alt="Amrita Vishwa Vidyapeetham">
-      </div>
+    <!-- Amrita -->
+    <section class="section-split" style="background:#f5f5f5;" data-aos="fade-up">
+      <div class="image" data-aos="fade-right"><img src="03.jpg" alt="Amrita Vishwa Vidyapeetham"></div>
       <div class="text">
         <h2>Amrita Vishwa Vidyapeetham</h2>
         <p>The Amrita Management and Leadership (AMAL) Club embodies the university’s ethos by fostering management, leadership, and communication skills among students. In alignment with Amrita’s vision of education for life and education for living, AMAL provides opportunities for students. Amrita Vishwa Vidyapeetham’s commitment to excellence in education and leadership development fuels the growth of student-driven initiatives like AMAL, making it a transformative platform for young professionals of tomorrow.</p>
-         <p>🏛 Empowered at Amrita, Inspired for Life!</p>
+        <p>🏛 Empowered at Amrita, Inspired for Life!</p>
       </div>
     </section>
 
-    <section class="features" data-aos="fade-up">
-      <h2 style="text-align:center; width:100%; font-size:2.5rem; margin-bottom:2rem;">Our Events</h2>
+    <!-- Our Events (features) -->
+    <section id="events" class="features" data-aos="fade-up">
+      <h2 style="text-align:center; width:100%; font-size:2.1rem; margin-bottom:1.25rem;">Our Events</h2>
       <div class="feature">
         <h2>💡 INNOVATE X</h2>
         <p>The Innovate X Leadership Workshop is an exclusive collaboration between the AMAL Club and ACE (Amrita Centre for Entrepreneurship), designed to empower students with essential leadership, management, and entrepreneurial skills.</p>
@@ -430,45 +197,344 @@
       </div>
     </section>
 
-    <section class="social-footer">
-      <h3>Follow Us</h3>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/amal_amritabengaluru/?__pwa=1#"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/amal-club-amrita-bengaluru/"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.youtube.com/@AMALClub_amrita"><i class="fab fa-youtube"></i></a>
+    <!-- EVENTS DETAIL LIST (WITH FILTER) -->
+    <section class="events-content" data-aos="fade-up" aria-labelledby="events-heading">
+      <h2 id="events-heading" style="text-align:center; margin-bottom:1rem;">Our Events (Detailed)</h2>
+
+      <div class="filter-container" aria-hidden="false">
+        <button class="filter-btn active" data-filter="all">All Events</button>
+        <button class="filter-btn" data-filter="2025">2025/26</button>
+        <button class="filter-btn" data-filter="previous">Previous Years</button>
+      </div>
+
+      <div class="event-block fade-left" data-year="2025">
+        <img src="event_n1.jpg" alt="Pitch Deck">
+        <div class="event-text">
+          <h3>Pitch Deck</h3>
+          <p>Pitch Deck, organized by AMAL Club at Kalakriti 2025, challenged teams to pitch quirky product ideas on the spot, boosting creativity, teamwork, and public speaking. Winners impressed with originality, humor, and quick thinking.</p>
+        </div>
+      </div>
+
+      <div class="event-block fade-right" style="flex-direction: row-reverse;" data-year="2025">
+        <img src="nightshift.jpeg" alt="Night Shift">
+        <div class="event-text">
+          <h3>Night Shift</h3>
+          <p>ACE and AMAL Clubs hosted "The Night Shift," a thrilling overnight startathon where teams tackled SDG challenges, built prototypes, and pitched ideas. The event boosted creativity, teamwork, and entrepreneurial skills with a ₹12,000 prize pool. It also featured an inspiring session by Ms. Rubina Amalraj, motivating future changemakers.</p>
+        </div>
+      </div>
+
+      <div class="event-block fade-left" data-year="previous">
+        <img src="event_n2.jpg" alt="Management Monopoly">
+        <div class="event-text">
+          <h3>Management Monopoly</h3>
+          <p>At Kalanjali 2025, AMAL Club hosted Management Games that tested students' problem-solving, communication, and teamwork through real-time challenges. Three winning teams were awarded mementos for their standout performance across all rounds.</p>
+        </div>
+      </div>
+
+      <div class="event-block fade-right" style="flex-direction: row-reverse;" data-year="previous">
+        <img src="EVENT_01.jpg" alt="Innovate X">
+        <div class="event-text">
+          <h3>Innovate X</h3>
+          <p>Innovate X is AMAL's premier entrepreneurial challenge where participants step into the shoes of startup founders and business strategists. This 2 day workshop encourages students to ideate, develop, and pitch their innovative business solutions to a panel of industry experts and investors.</p>
+        </div>
+      </div>
+
+      <div class="event-block fade-left" data-year="previous">
+        <img src="MCK02.jpg" alt="Mock Parliament">
+        <div class="event-text">
+          <h3>Mock Parliament</h3>
+          <p>The AMAL Mock Parliament is a flagship event designed to simulate the workings of the Indian Parliament, allowing students to experience real policymaking, debate, and leadership in action. Participants take on roles such as MPs, the Speaker, Prime Minister, and the Leader of Opposition, engaging in heated debates, bill drafting, and voting procedures.</p>
+        </div>
+      </div>
+
+      <div class="event-block fade-right" style="flex-direction: row-reverse;" data-year="previous">
+        <img src="EVENT_03.jpg" alt="LinkedIn Optimization">
+        <div class="event-text">
+          <h3>LinkedIn Optimization</h3>
+          <p>The LinkedIn Optimization Workshop by AMAL Club is designed to help students build a strong professional presence, network effectively, and unlock career opportunities. Whether you're new to LinkedIn or looking to enhance your personal brand, this workshop will provide insider strategies to make your profile stand out!</p>
+        </div>
       </div>
     </section>
 
-    <div class="bottom-logo">
-      <img src="02.png" alt="Bottom Left Logo">
-    </div>
 
-    <footer>
-      <p>&copy; 2025 AMAL Club | All rights reserved</p>
-    </footer>
+    <!-- LEADERSHIP / FULL TEAM (complete list) -->
+    <section id="leadership" class="leadership-section" data-aos="fade-up">
+      <div class="leadership-heading" style="text-align:center;">
+        <h1>Meet Our Leadership</h1>
+      </div>
 
-    <button class="theme-toggle" onclick="toggleTheme()">
-      <i class="fas fa-adjust"></i>
-    </button>
+      <div class="leadership-content" style="margin-top:1rem; text-align:center; color:#444;">
+        <p>At AMAL Club, leadership is at the heart of everything we do. Our dedicated team of visionary thinkers, strategists, and changemakers works tirelessly to create impactful experiences, foster collaboration, and drive innovation.</p>
+      </div>
+
+      <!-- Leadership Team -->
+      <h2 class="role-title">Leadership Team</h2>
+      <div class="row">
+        <div class="member-card"><img src="PC01.jpg" alt="Prof. Sriram Devanathan"><div class="member-name">Prof. Sriram Devanathan</div><div class="member-position">Founder</div></div>
+        <div class="member-card"><img src="PC02.jpg" alt="Ankit Jain"><div class="member-name">Ankit Jain</div><div class="member-position">Mentor</div></div>
+        <div class="member-card"><img src="EX10.jpg" alt="Kanishka"><div class="member-name">Kanishka</div><div class="member-position">President</div></div>
+        <div class="member-card"><img src="OB02.jpeg" alt="Sanskar Deopuje"><div class="member-name">Sanskar Deopuje</div><div class="member-position">Vice President</div></div>
+        <div class="member-card"><img src="OB03.jpeg" alt="Saanvi"><div class="member-name">Saanvi</div><div class="member-position">Vice President</div></div>
+        <div class="member-card"><img src="OB04.jpg" alt="Ashrita"><div class="member-name">Ashrita</div><div class="member-position">Treasurer</div></div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- Team Leads -->
+      <h2 class="role-title">Team Leads</h2>
+      <div class="row">
+        <div class="member-card"><img src="EM04.jpeg" alt="Josheni K S"><div class="member-name">Josheni K S</div><div class="member-position">Event Management Head</div></div>
+        <div class="member-card"><img src="MT01.jpg" alt="Dedeepya Kolli"><div class="member-name">Dedeepya Kolli</div><div class="member-position">Media Team Head</div></div>
+        <div class="member-card"><img src="OT01.jpeg" alt="Tanvi Reddy"><div class="member-name">Tanvi Reddy</div><div class="member-position">OutReach head</div></div>
+        <div class="member-card"><img src="TT01.jpeg" alt="Jiya Borikar"><div class="member-name">Jiya Borikar</div><div class="member-position">Technical Head</div></div>
+        <div class="member-card"><img src="DR03.jpg" alt="Niyatee Gamre"><div class="member-name">Niyatee Gamre</div><div class="member-position">Documentation & Report Head</div></div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- Event Management Team -->
+      <h2 class="role-title">Event Management Team</h2>
+      <div class="row">
+        <div class="member-card"><img src="EM02.jpeg" alt="Viraj Tayshete"><div class="member-name">Viraj Tayshete</div><div class="member-position">3rd year RAE</div></div>
+        <div class="member-card"><img src="EM03.jpg" alt="Neha S"><div class="member-name">Neha S</div><div class="member-position">3rd year AIE</div></div>
+        <div class="member-card"><img src="EM01.jpg" alt="NandaKrishna J"><div class="member-name">NandaKrishna J</div><div class="member-position">3rd year ECE</div></div>
+        <div class="member-card"><img src="EM05.jpeg" alt="Ch. Sriya bharathi"><div class="member-name">Ch. Sriya bharathi</div><div class="member-position">2nd year EACr</div></div>
+        <div class="member-card"><img src="EM06.jpg" alt="Divyanshi Dixit"><div class="member-name">Divyanshi Dixit</div><div class="member-position">1st Year RAE</div></div>
+        <div class="member-card"><img src="EM07.jpg" alt="Shainehaa VT"><div class="member-name">Shainehaa VT</div><div class="member-position">1st Year RAE</div></div>
+        <div class="member-card"><img src="EM08.jpg" alt="Mukund Madhav Dwivedi"><div class="member-name">Mukund Madhav Dwivedi</div><div class="member-position">1st Year ECE</div></div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- Media Team -->
+      <h2 class="role-title">Media Team</h2>
+      <div class="row">
+        <div class="member-card"><img src="MT01.jpg" alt="Dedeepya Kolli"><div class="member-name">Dedeepya Kolli</div><div class="member-position">3rd year ECE</div></div>
+        <div class="member-card"><img src="MT02.jpg" alt="Shivani"><div class="member-name">SHIVANI RAM R. A.</div><div class="member-position">3rd year ECE</div></div>
+        <div class="member-card"><img src="MT03.jpg" alt="Tarun"><div class="member-name">H S TARUN</div><div class="member-position">2rd year ECE</div></div>
+        <div class="member-card"><img src="MT04.jpg" alt="Kanaka Varsha"><div class="member-name">Motamarri Kanaka Varsha</div><div class="member-position">2rd year ELC</div></div>
+        <div class="member-card"><img src="MT05.jpg" alt="Aditya"><div class="member-name">Aditya S Prabhakar</div><div class="member-position">2rd year ECE</div></div>
+        <div class="member-card"><img src="MT06.jpg" alt="Jeevietha"><div class="member-name">Jeevietha</div><div class="member-position">2rd year AIE</div></div>
+        <div class="member-card"><img src="MT07.jpeg" alt="Chaithanya"><div class="member-name">Chaithanya</div><div class="member-position">1rd year AIE</div></div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- Outreach Team -->
+      <h2 class="role-title">Outreach Team</h2>
+      <div class="row">
+        <div class="member-card"><img src="OT01.jpeg" alt="Tanvi"><div class="member-name">Tanvi Reddy</div><div class="member-position">3rd year ECE</div></div>
+        <div class="member-card"><img src="OT02.jpg" alt="Shyam"><div class="member-name">C.Shri Shyam Charan</div><div class="member-position">3rd year ECE</div></div>
+        <div class="member-card"><img src="OT03.jpg" alt="Sabith"><div class="member-name">SABITH P</div><div class="member-position">2rd year ELC</div></div>
+        <div class="member-card"><img src="OT04.jpg" alt="Varshith"><div class="member-name">Varshith P</div><div class="member-position">2rd year EEE</div></div>
+        <div class="member-card"><img src="OT05.jpg" alt="Pragathi"><div class="member-name">Pragathi L</div><div class="member-position">1rd year AIE</div></div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- Technical Team -->
+      <h2 class="role-title">Technical Team</h2>
+      <div class="row">
+        <div class="member-card"><img src="TT01.jpeg" alt="Jiya"><div class="member-name">Jiya Borikar</div><div class="member-position">3rd year AIE</div></div>
+        <div class="member-card"><img src="TT02.jpg" alt="Rohini"><div class="member-name">Rohini B</div><div class="member-position">2rd year CSE</div></div>
+        <div class="member-card"><img src="TT03.jpg" alt="Navnita"><div class="member-name">Navnita Krishnan</div><div class="member-position">2rd year AIE</div></div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- Documentation & Report Team -->
+      <h2 class="role-title">Documentation & Report Team</h2>
+      <div class="row">
+        <div class="member-card"><img src="DR01.jpg" alt="Karthik"><div class="member-name">M V Karthik Krishna</div><div class="member-position">3rd year MEE</div></div>
+        <div class="member-card"><img src="DR02.jpg" alt="Vineeth"><div class="member-name">P Vineeth Anand</div><div class="member-position">3rd year ECE</div></div>
+        <div class="member-card"><img src="DR03.jpg" alt="Niyatee"><div class="member-name">Niyatee Gamre</div><div class="member-position">1st year CSE</div></div>
+        <div class="member-card"><img src="DR04.jpg" alt="Abhiram"><div class="member-name">Abhiram Muktha</div><div class="member-position">1st year ECE</div></div>
+      </div>
+
+    </section>
+   <!-- SUCCESS / WHATSAPP INVITE -->
+    <section id="success" data-aos="fade-up">
+      <div class="success-container" style="background:#fff;padding:1.75rem;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,0.06);text-align:center;">
+        <p>Scan the QR code below to join the WhatsApp group:</p>
+        <img src="inviteqr.png" alt="WhatsApp Group QR Code" style="width:220px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.08);">
+        <br>
+        <p>Let's join together and make wonderful memories at AMAL🤟 </p>
+      </div>
+    </section>
+
   </main>
 
+  <!-- Footer -->
+  <footer>
+    <div style="text-align:center;">
+      <img src="02.png" alt="AMAL Club Logo" style="height:64px;">
+      <p style="margin-top:6px;">Follow Us</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/amal_amritabengaluru/?__pwa=1#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/amal-club-amrita-bengaluru/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@AMALClub_amrita" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p style="margin-top:.8rem;">&copy; 2025 AMAL Club | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- External scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/minified/html5-qrcode.min.js"></script>
+
   <script>
-    AOS.init();
+    // Initialize AOS (simplified)
+    AOS.init({ duration: 600, once: true });
 
-    function toggleTheme() {
-      document.body.classList.toggle("dark");
-      document.body.classList.toggle("light");
-    }
-
-    const currentLocation = location.href;
-    const menuItem = document.querySelectorAll('nav ul li a');
-    menuItem.forEach(link => {
-      if (link.href === currentLocation) {
-        link.classList.add('active');
-      }
+    // Smooth menu active
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));
+        a.classList.add('active');
+      });
     });
-  </script>
 
+    // Filters for events
+    (function(){
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const eventBlocks = document.querySelectorAll('.event-block');
+      function applyFilter(filter){
+        eventBlocks.forEach(block=>{
+          const y = block.getAttribute('data-year') || '';
+          if(filter === 'all') block.classList.remove('hidden');
+          else if(filter === '2025') block.classList.toggle('hidden', y !== '2025');
+          else if(filter === 'previous') block.classList.toggle('hidden', y === '2025');
+        });
+      }
+      filterButtons.forEach(btn=>{
+        btn.addEventListener('click', function(){
+          filterButtons.forEach(b=>b.classList.remove('active'));
+          this.classList.add('active');
+          applyFilter(this.getAttribute('data-filter'));
+        });
+      });
+    })();
+
+    // Back to top
+    document.getElementById('backToTop').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+    // IntersectionObserver to add in-view (for fade effects)
+    (function(){
+      const obs = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) {
+            e.target.classList.add('in-view');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.18 });
+      document.querySelectorAll('.event-block, .member-card, .section-split').forEach(el=>obs.observe(el));
+    })();
+
+    // Registration form: posts to Google Apps Script and then shows QR in-page
+    (function(){
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwOIgqWhT0ktm-NcRSdBJccPyIo4PBF0oehcasRP1PZ4prZ1h9XuKFyOntda8lNXs2s/exec';
+      const form = document.getElementById('registrationForm');
+      const regStatus = document.getElementById('regStatus');
+      const qraContainer = document.getElementById('qraContainer');
+      const generatedQrcode = document.getElementById('generatedQrcode');
+      const qraInfo = document.getElementById('qraInfo');
+
+      // Hide qra on load if no id param
+      function getQueryParam(name) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+      }
+
+      function showQRForID(uniqueID) {
+        generatedQrcode.innerHTML = '';
+        new QRCode(generatedQrcode, {
+          text: `https://script.google.com/macros/s/AKfycbzq6imjKKWBqJX-4j8EGqzi1zQnZuLR0dUhtJTHBKqKz1SYTv39HrDHaYetct48aqSbcQ/exec?id=${encodeURIComponent(uniqueID)}`,
+          width: 220, height: 220
+        });
+        qraInfo.innerHTML = `<p style="margin-top:0.75rem;">Your registration ID: <strong>${uniqueID}</strong></p>`;
+        // scroll to qra
+        location.hash = 'qra';
+      }
+
+      // If page opened with id param, show generated QR
+      const urlID = getQueryParam('id');
+      if(urlID) {
+        showQRForID(urlID);
+      } else {
+        // hide qra container until generated
+        // leave visible but empty - user will be taken after submit
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        regStatus.textContent = 'Submitting...';
+        const uniqueID = 'AMAL' + Date.now();
+        document.getElementById('uniqueID').value = uniqueID;
+
+        const formData = new FormData(form);
+        try {
+          const resp = await fetch(scriptURL, { method: 'POST', body: formData });
+          if(!resp.ok) throw new Error('Network response was not ok');
+          regStatus.textContent = 'Submitted — generating QR...';
+          // Show QR in-page
+          showQRForID(uniqueID);
+          regStatus.textContent = 'Registration complete!';
+        } catch(err) {
+          regStatus.textContent = 'Submission failed. Try again.';
+          console.error(err);
+        }
+      });
+
+    })();
+
+    // Attendance scanner using Html5Qrcode
+    (function(){
+      const readerDiv = document.getElementById('reader');
+      if(readerDiv) {
+        // endpoint to log attendance
+        const attendanceEndpoint = 'https://script.google.com/macros/s/AKfycbw1bFzACuUWTrlZmhFXLQU-16utjWa5DczLcEwwUhTY48vABM2fGD1kh50fhGUxlvpj/exec';
+
+        function logAttendance(uniqueID) {
+          const fd = new FormData();
+          fd.append('id', uniqueID);
+          fetch(attendanceEndpoint, { method:'POST', body: fd })
+            .then(res => res.text())
+            .then(txt => alert('✅ ' + txt))
+            .catch(err => { alert('Error marking attendance'); console.error(err); });
+        }
+
+        // create scanner
+        const html5QrCode = new Html5Qrcode("reader");
+        const qrboxSize = 250;
+        const config = { fps: 10, qrbox: qrboxSize };
+
+        // start camera
+        Html5Qrcode.getCameras().then(cameras => {
+          if(cameras && cameras.length) {
+            const cameraId = cameras[0].id;
+            html5QrCode.start(
+              cameraId,
+              config,
+              (decodedText, decodedResult) => {
+                // stop scanning and log attendance
+                html5QrCode.stop().then(() => {
+                  logAttendance(decodedText);
+                }).catch(err => console.error('Stop failed', err));
+              },
+              (error) => { /* QR code scanning error, ignore silently */ }
+            ).catch(err => console.error('Unable to start scanner', err));
+          }
+        }).catch(err => {
+          console.warn('No cameras found or permission denied', err);
+        });
+      }
+    })();
+
+  </script>
 </body>
 </html>
