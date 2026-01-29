@@ -35,7 +35,7 @@
     .carousel-caption { top:50%; transform:translateY(-50%); z-index:2; text-align:center; }
     .carousel-caption h1 { font-size:clamp(1.8rem,3.8vw,3.5rem); font-weight:700; color:#fff; text-shadow:0 5px 18px rgba(0,0,0,0.6); }
     .carousel-caption p { color:#fff; margin:1rem 0; font-size:1.15rem; }
-    .carousel-caption .btn { background:linear-gradient(45deg,var(--maroon),var(--gold)); color:#fff; font-weight:700; border-radius:8px; padding:.7rem 1.4rem; border:none; box-shadow:0 8px 22px rgba(0,0,0,0.16); }
+    .carousel-caption .btn , .event-text .btn{ background:linear-gradient(45deg,var(--maroon),var(--gold)); color:#fff; font-weight:700; border-radius:8px; padding:.7rem 1.4rem; border:none; box-shadow:0 8px 22px rgba(0,0,0,0.16); }
     .carousel-indicators [data-bs-target] { background-color:var(--gold); width:12px; height:12px; border-radius:50%; }
 
     /* Sections */
@@ -197,6 +197,34 @@
       </div>
     </section>
 
+
+
+    <section class="events-content" data-aos="fade-up" aria-labelledby="events-heading">
+      <h2 id="events-heading" style="text-align:center; margin-bottom:1rem;">Upcoming Events</h2>
+      
+      <div class="event-block fade-left" data-year="previous">
+        <img src="MCK02.jpg" alt="Mock Parliament">
+        <div class="event-text">
+          <h3>Mock Parliament</h3>
+          <p>The AMAL Mock Parliament is a flagship event designed to simulate the workings of the Indian Parliament, allowing students to experience real policymaking, debate, and leadership in action. Participants take on roles such as MPs, the Speaker, Prime Minister, and the Leader of Opposition, engaging in heated debates, bill drafting, and voting procedures.</p>
+          <a class="btn" href="https://www.google.com">Register Now</a>
+        </div>
+      </div>
+
+      <div class="event-block fade-right" style="flex-direction: row-reverse;" data-year="previous">
+        <img src="EVENT_03.jpg" alt="LinkedIn Optimization">
+        <div class="event-text">
+          <h3>LinkedIn Optimization</h3>
+          <p>The LinkedIn Optimization Workshop by AMAL Club is designed to help students build a strong professional presence, network effectively, and unlock career opportunities. Whether you're new to LinkedIn or looking to enhance your personal brand, this workshop will provide insider strategies to make your profile stand out!</p>
+          <a class="btn" href="https://www.google.com">Register Now</a>
+        </div>
+      </div>
+    </section>
+
+     <div class="section-divider">
+       <br>
+     </div>
+
     <!-- EVENTS DETAIL LIST (WITH FILTER) -->
     <section class="events-content" data-aos="fade-up" aria-labelledby="events-heading">
       <h2 id="events-heading" style="text-align:center; margin-bottom:1rem;">Our Events (Detailed)</h2>
@@ -239,49 +267,7 @@
         </div>
       </div>
 
-      <!-- <div class="event-block fade-left" data-year="previous">
-        <img src="MCK02.jpg" alt="Mock Parliament">
-        <div class="event-text">
-          <h3>Mock Parliament</h3>
-          <p>The AMAL Mock Parliament is a flagship event designed to simulate the workings of the Indian Parliament, allowing students to experience real policymaking, debate, and leadership in action. Participants take on roles such as MPs, the Speaker, Prime Minister, and the Leader of Opposition, engaging in heated debates, bill drafting, and voting procedures.</p>
-        </div>
-      </div>
-
-      <div class="event-block fade-right" style="flex-direction: row-reverse;" data-year="previous">
-        <img src="EVENT_03.jpg" alt="LinkedIn Optimization">
-        <div class="event-text">
-          <h3>LinkedIn Optimization</h3>
-          <p>The LinkedIn Optimization Workshop by AMAL Club is designed to help students build a strong professional presence, network effectively, and unlock career opportunities. Whether you're new to LinkedIn or looking to enhance your personal brand, this workshop will provide insider strategies to make your profile stand out!</p>
-        </div>
-      </div> -->
     </section>
-
-    <!-- Upcoming events -->
-     <div class="section-divider">
-       <br>
-     </div>
-     <section class="events-content" data-aos="fade-up" aria-labelledby="events-heading">
-      <h2 id="events-heading" style="text-align:center; margin-bottom:1rem;">Upcoming Events</h2>
-      
-      <div class="event-block fade-left" data-year="previous">
-        <img src="MCK02.jpg" alt="Mock Parliament">
-        <div class="event-text">
-          <h3>Mock Parliament</h3>
-          <p>The AMAL Mock Parliament is a flagship event designed to simulate the workings of the Indian Parliament, allowing students to experience real policymaking, debate, and leadership in action. Participants take on roles such as MPs, the Speaker, Prime Minister, and the Leader of Opposition, engaging in heated debates, bill drafting, and voting procedures.</p>
-          <a href="https://www.google.com">Registration Form</a>
-        </div>
-      </div>
-
-      <div class="event-block fade-right" style="flex-direction: row-reverse;" data-year="previous">
-        <img src="EVENT_03.jpg" alt="LinkedIn Optimization">
-        <div class="event-text">
-          <h3>LinkedIn Optimization</h3>
-          <p>The LinkedIn Optimization Workshop by AMAL Club is designed to help students build a strong professional presence, network effectively, and unlock career opportunities. Whether you're new to LinkedIn or looking to enhance your personal brand, this workshop will provide insider strategies to make your profile stand out!</p>
-          <a href="https://www.google.com">Registration Form</a>
-        </div>
-      </div>
-
-     </section>
 
     <!-- LEADERSHIP / FULL TEAM (complete list) -->
     <section id="leadership" class="leadership-section" data-aos="fade-up">
